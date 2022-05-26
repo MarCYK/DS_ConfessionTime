@@ -58,4 +58,33 @@ public class operationTest {
 //            alert.setContentText("SQL Deletion Error");
 	}
     }
+    
+    public void sqlAddToNode(String thisid,String replyid,String content,String date,Connection conn){
+	try{
+	    PreparedStatement prp = conn.prepareStatement("insert into node (thisID,replyID,content,date) values (?,?,?,?)");
+	    prp.setString(1, thisid);
+	    prp.setString(2, replyid);
+	    prp.setString(3, content);
+	    prp.setString(4, date);
+	    
+	    prp.execute();
+	    
+	}catch(SQLException e){
+	    JOptionPane.showMessageDialog(null, e.getMessage());
+	}
+    }
+    
+    public int count(String tableName,Connection conn){
+	try{
+	    PreparedStatement prp = conn.prepareStatement("select count(*) from "+tableName);
+	    ResultSet rs=prp.executeQuery();
+	    rs.next();
+	    return rs.getInt(1);
+	}catch(Exception e){
+	    JOptionPane.showMessageDialog(null, e.getMessage());
+	    return -1;
+	}
+	
+	
+    }
 }
