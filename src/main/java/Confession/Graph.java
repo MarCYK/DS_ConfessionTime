@@ -116,16 +116,4 @@ public class Graph<T> {
     public Iterable<T> getAllVertices() {
         return this.adjacencyList.keySet();
     }
-    
-    public int getSize() {
-        return adjacencyList.size();
-    }
-    
-    public void batchRemoval(T v) {
-        List<String> mainList = new ArrayList<String>();
-
-        while(this.adjacencyList.get(v) != null) {
-            mainList.addAll(this.adjacencyList.get(v));
-        }
-    }
 }
