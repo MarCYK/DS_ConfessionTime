@@ -13,8 +13,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Post implements Serializable{
-    private String id;
-    private String description;
-    private Timestamp post_Timestamp;
+    private String thisID;
+    private String content;
+    private Timestamp date;
     
 }
