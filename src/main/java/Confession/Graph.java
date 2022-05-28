@@ -17,9 +17,9 @@ import java.util.List;
  * @param <T> The type that would be used as vertex.
  */
 public class Graph<T> {
-    final private HashMap<T, ArrayList<T>> adjacencyList;
+    final private HashMap<T, ArrayList<Post>> adjacencyList;
 
-    public HashMap<T, ArrayList<T>> getAdjacencyList() {
+    public HashMap<T, ArrayList<Post>> getAdjacencyList() {
 	return adjacencyList;
     }
     
@@ -39,7 +39,7 @@ public class Graph<T> {
         if (this.adjacencyList.containsKey(v)) {
             throw new IllegalArgumentException("Vertex already exists.");
         }
-        this.adjacencyList.put(v, new ArrayList<T>());
+        this.adjacencyList.put(v, new ArrayList<Post>());
     }
     
     /**
@@ -66,8 +66,8 @@ public class Graph<T> {
      * @param v Start vertex.
      * @param u Destination vertex.
      */
-    public void addEdge(T v, T u) {
-        if (!this.adjacencyList.containsKey(v) || !this.adjacencyList.containsKey(u)) {
+    public void addEdge(T v, Post u) {
+        if (!this.adjacencyList.containsKey(v)) {
             throw new IllegalArgumentException();
         }
         
@@ -108,8 +108,8 @@ public class Graph<T> {
      * @param v The vertex.
      * @return An Iterable for connected vertices.
      */
-    public ArrayList<T> getNeighbors(T v) {
-	ArrayList<T> temp = new ArrayList<>();
+    public ArrayList<Post> getNeighbors(T v) {
+	ArrayList<Post> temp = new ArrayList<>();
 	for(int i = 0; i < this.getSize(v); i++) {
 	    temp.add(this.adjacencyList.get(v).get(i));
 	}
@@ -127,5 +127,5 @@ public class Graph<T> {
     
     public int getSize(T v) {
 	return this.adjacencyList.get(v).size();
-    }
+    }     
 }
