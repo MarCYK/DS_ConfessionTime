@@ -96,7 +96,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>TestingJavaFX.MainApp</mainClass>
+                    <mainClass>Confession.Page_Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>

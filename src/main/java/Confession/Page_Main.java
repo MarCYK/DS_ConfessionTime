@@ -7,12 +7,19 @@ package Confession;
 import java.util.Arrays;
 import testingWaitingList.operationTest;
 import java.sql.*;
+import java.util.Scanner;
 
 import static Confession.util.*;
 public class Page_Main {
-
+    Graph<String> graph = new Graph<>();
+    
     public static void main(String[] args) {
-        
+        Tag tag = new Tag();
+        System.out.println(tag.makeTag());
+        System.out.println(tag.makeTag());
+        System.out.println(tag.makeTag());
+        System.out.println(tag.makeTag());
+        System.out.println("\n\n");
 //	  operationTest sql = new operationTest();
 //	
 //        Graph<String> graph1 = new Graph<>();
@@ -41,12 +48,35 @@ public class Page_Main {
 //	}catch(Exception e){
 //	    System.out.println(e.getMessage());
 //	}
+        user_Page();
     }
     
-    public static void user_Pager() {
+    public static void user_Page() {
         String str;
         do {
-            str =ask(1, "Enter '0' to create new post\n or '1' to reply to an existing post\n or '-1' to close", "");
-        }
+            System.out.println("Welcome to Confession Time");
+            str = ask(2,"'0' to close\n'1' to create new post\n'2' to reply to an existing post", "");
+            if(isInteger(str)) {
+                int choice = Integer.parseInt(str);
+                switch(choice) {
+                    case 0: return;
+                    case 1: newPost();
+                    case 2: replyPost();
+                }           
+            }
+        } while(true);
+    }
+    
+    public static void newPost() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("~~~ Create New Post ~~~");
+        System.out.println("Add Content:");
+        String content = in.nextLine();
+        
+        
+    }
+    
+    public static void replyPost() {
+
     }
 }

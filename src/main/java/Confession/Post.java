@@ -10,14 +10,14 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 public class Post implements Serializable{
-    private String thisID = "#UM";
+    private String thisID;
     private String content;
     private Timestamp date;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH.mmaa");
 
     public Post(int thisID, String content) {
         String formatted = String.format("%05d", thisID);
-        this.thisID += formatted;
+        this.thisID = "#UM" + formatted;
         this.content = content;
         this.date = new Timestamp(System.currentTimeMillis());
     }
