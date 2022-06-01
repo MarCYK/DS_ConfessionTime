@@ -3,13 +3,23 @@ package Confession;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import testingWaitingList.operationTest;
 
 public class Tag {
     private String thisID;
     static private int tag = -1;
 
     public String makeTag() {
-        tag++;
+        operationTest mysql = new operationTest();
+        try{
+            Connection conn = mysql.getConnection();
+            ResultSet rs = mysql.sqlSelect("select * from node order by id desc limit 1", conn);rs.next();
+            tag = Integer.parseInt(rs.getString("id")) + 1;
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "u got error btw lmao\n\n"+e.getMessage());
+        }
         String formatted = String.format("%05d", tag);
         this.thisID = "#UM" + formatted;
         return thisID;
