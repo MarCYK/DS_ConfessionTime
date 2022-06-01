@@ -16,7 +16,7 @@ public class batchRemoval {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-	remove("UM2");
+	remove("U2");
     }
     
     public static void remove(String str){
