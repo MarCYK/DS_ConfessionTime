@@ -106,7 +106,7 @@ public class Graph<T> {
      * Get connected vertices of a vertex.
      * 
      * @param v The vertex.
-     * @return An Iterable for connected vertices.
+     * @return An ArrayList for connected vertices.
      */
     public ArrayList<Post> getNeighbors(T v) {
 	ArrayList<Post> temp = new ArrayList<>();
