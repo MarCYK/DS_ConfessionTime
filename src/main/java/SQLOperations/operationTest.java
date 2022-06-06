@@ -60,9 +60,9 @@ public class operationTest {
 	}
     }
     
-    public void sqlAddToNode(String thisid,String replyid,String content,String date,Connection conn){
+    public void sqlAddTo(String thisid,String replyid,String content,String date,String table,Connection conn){
 	try{
-	    PreparedStatement prp = conn.prepareStatement("insert into node (thisID,replyID,content,date) values (?,?,?,?)");
+	    PreparedStatement prp = conn.prepareStatement("insert into "+table+" (thisID,replyID,content,date) values (?,?,?,?)");
 	    prp.setString(1, thisid);
 	    prp.setString(2, replyid);
 	    prp.setString(3, content);

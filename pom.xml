@@ -96,7 +96,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>Confession.Page_Main</mainClass>
+                    <mainClass>User.RunConfession</mainClass>
                 </configuration>
             </plugin>
         </plugins>
