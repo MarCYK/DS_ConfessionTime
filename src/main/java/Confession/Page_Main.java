@@ -5,7 +5,7 @@ package Confession;
  * @author Marvin Chin Yi Kai
  */
 import java.util.Arrays;
-import testingWaitingList.operationTest;
+import SQLOperations.operationTest;
 import java.sql.*;
 import java.util.Scanner;
 

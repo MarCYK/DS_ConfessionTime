@@ -1,4 +1,6 @@
-package MySQL;
+package SQLOperations;
+
+
 
 /**
  *

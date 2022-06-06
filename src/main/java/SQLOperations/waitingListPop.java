@@ -4,10 +4,10 @@
 	Not imply GUI yet, the output can be seen from MySQL IDE and cmd
 	Not separate spam post yet
  */
-package testingWaitingList;
+package SQLOperations;
 
 import java.awt.HeadlessException;
-import testingWaitingList.operationTest;
+import SQLOperations.operationTest;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
