@@ -52,6 +52,8 @@ public class SubmissionController implements Initializable {
 	}catch(Exception e){
 	    
 	}
+        
+        txt_Comment.clear();
     }
 
     @FXML
