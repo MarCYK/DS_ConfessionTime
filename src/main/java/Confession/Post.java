@@ -5,19 +5,18 @@ package Confession;
  * @author Marvin Chin Yi Kai
  */
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
-public class Post implements Serializable{
+public class Post{
     private String thisID;
     private String content;
     private Timestamp date;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH.mmaa");
 
-    public Post(int thisID, String content) {
-        String formatted = String.format("%05d", thisID);
-        this.thisID = "#UM" + formatted;
+    public Post(String content) {
+        Tag tag = new Tag();
+        this.thisID = tag.makeTag();
         this.content = content;
         this.date = new Timestamp(System.currentTimeMillis());
     }
