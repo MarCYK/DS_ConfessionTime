@@ -15,10 +15,7 @@ public class Page_Main {
     
     public static void main(String[] args) {
         Tag tag = new Tag();
-        System.out.println(tag.makeTag());
-        System.out.println(tag.makeTag());
-        System.out.println(tag.makeTag());
-        System.out.println(tag.makeTag());
+        System.out.println(new Post("test"));
         System.out.println("\n\n");
 //	  operationTest sql = new operationTest();
 //	
