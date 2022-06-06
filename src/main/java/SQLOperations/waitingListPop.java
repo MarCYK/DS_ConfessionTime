@@ -20,7 +20,7 @@ public class waitingListPop {
     
     
     public static void main(String[] args) {
-	timeClass<String> time = new timeClass<>();
+	timeClass time = new timeClass();
 	operationTest mysql = new operationTest();
 	try{
 	    Connection conn = mysql.getConnection();

@@ -41,7 +41,7 @@ public class SubmissionController implements Initializable {
 	operationTest mysql = new operationTest();
 	timeClass time = new timeClass();
 	Tag tag = new Tag();
-	String thisid = tag.makeTag();
+	String thisid = "";
 	String replyid = "";
 	String content = txt_Comment.getText();
 	try{
