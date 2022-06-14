@@ -5,7 +5,7 @@
 package SQLOperations;
 
 import java.sql.*;
-
+import Spam.SpamDetection;
 /**
  *
  * @author Irfan
@@ -31,5 +31,40 @@ public class waitingListPush {
 	    
 	}
     }
+    
+//    public void waitingListPush(String str) {
+//        SpamDetection spam = new SpamDetection();
+//        if(!spam.classifySpam(str)) {
+//            operationTest mysql = new operationTest();
+//            timeClass time = new timeClass();
+//
+//            String thisid = "";
+//            String replyid = "";
+//            String content = str;
+//            try{
+//                Connection conn = mysql.getConnection();
+//                mysql.sqlAddTo(thisid, replyid, content, time.timeNow(), "waitinglist", conn);
+//
+//                conn.close();
+//            }catch(Exception e){
+//
+//            }
+//        } else if(spam.classifySpam(str)) {
+//            operationTest mysql = new operationTest();
+//            timeClass time = new timeClass();
+//
+//            String thisid = "";
+//            String replyid = "";
+//            String content = str;
+//            try{
+//                Connection conn = mysql.getConnection();
+//                mysql.sqlAddTo(thisid, replyid, content, time.timeNow(), "spam", conn);
+//
+//                conn.close();
+//            }catch(Exception e){
+//
+//            }
+//        }
+//    }
     
 }

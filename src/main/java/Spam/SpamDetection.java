@@ -45,6 +45,7 @@ public class SpamDetection {
         // remember the last 6000 learned classifications
         bayes.setMemoryCapacity(6000);
         
+        // training model
         try {          
             Scanner hm = new Scanner(new File("src\\main\\resources\\DataSet\\hamdata.txt"));
             while(hm.hasNext()) {
@@ -64,13 +65,13 @@ public class SpamDetection {
         }
     }
 
-    // Data labelled as SPAM
+    // Content labelled as SPAM
     public void learnPositive(String str) {
         String[] positiveText = str.split("\\s");
         bayes.learn("positive", Arrays.asList(positiveText));
     }
     
-    // Data not labelled as SPAM
+    // Content not labelled as SPAM
     public void learnNegative(String str) {
         String[] negativeText = str.split("\\s");
         bayes.learn("negative", Arrays.asList(negativeText));
