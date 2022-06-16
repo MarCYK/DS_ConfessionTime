@@ -7,6 +7,7 @@ package SQLOperations;
  * @author Marvin Chin Yi Kai
  */
 import Confession.Tag;
+import Spam.RepostDetection;
 import Spam.SpamDetection;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -154,7 +155,8 @@ public class MySQLOperation {
     
     public void waitingListPush(String str) {
         SpamDetection spam = new SpamDetection();
-        if(!spam.classifySpam(str)) {
+        RepostDetection rp = new RepostDetection();
+        if(!spam.classifySpam(str) && !rp.checkRepost(str)) {
             operationTest mysql = new operationTest();
             timeClass time = new timeClass();
 
@@ -184,6 +186,8 @@ public class MySQLOperation {
             }catch(Exception e){
 
             }
+        } else if(rp.checkRepost(str)) {
+            System.out.println("repost!");
         }
     }
     

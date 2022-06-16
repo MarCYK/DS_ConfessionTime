@@ -16,7 +16,7 @@ public class Page_Main {
     
     public static void main(String[] args) {
         SpamDetection spam = new SpamDetection();
-        String str = "";
+        String str = "test";
         System.out.println(spam.classifySpam(str));
     }
     

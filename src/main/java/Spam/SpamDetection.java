@@ -1,5 +1,10 @@
 package Spam;
 
+/**
+ * Implementing Spam Detection using Bayes classification Method
+ * @author Marvin Chin Yi Kai
+ */
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.Arrays;
@@ -7,11 +12,7 @@ import java.util.ArrayList;
 import de.daslaboratorium.machinelearning.classifier.bayes.BayesClassifier;
 import de.daslaboratorium.machinelearning.classifier.Classifier;
 
-/*
-Implementing Spam Detection using Bayes classification Method
-*/
-
-/* Interface
+/* INTERFACE
 The abstract Classifier<T, K> serves as a base for the concrete BayesClassifier<T, K>. Here are its methods. Please also refer to the Javadoc.
     void reset() Resets the learned feature and category counts.
     Set<T> getFeatures() Returns a Set of features the classifier knows about.
@@ -37,29 +38,68 @@ The BayesClassifier<T, K> class implements the following abstract method:
     Classification<T, K> classify(Collection<T> features) It will retrieve the most likely category for the features given and depends on the concrete classifier implementation.
 */
 
+/*
+To fix: Find a good facebook spam dataset
+*/
 public class SpamDetection {    
     // Create a new bayes classifier with string categories and string features.
     static Classifier<String, String> bayes = new BayesClassifier<String, String>();
 
     public SpamDetection() {
-        // remember the last 6000 learned classifications
-        bayes.setMemoryCapacity(6000);
+        // remember the last 1000000 learned classifications
+        bayes.setMemoryCapacity(1000000);
         
         // training model
-        try {          
+        try {            
+            Scanner fb = new Scanner(new File("src\\main\\resources\\DataSet\\FBdata.txt"));
+            fb.useDelimiter(",,,");
+            while(fb.hasNext()) {
+                String str = fb.nextLine();
+                learnNegative(str);
+            }
+            fb.close();   
+            
             Scanner hm = new Scanner(new File("src\\main\\resources\\DataSet\\hamdata.txt"));
             while(hm.hasNext()) {
                 String str = hm.nextLine();
                 learnNegative(str);
             }
             hm.close();
-            
+
             Scanner sp = new Scanner(new File("src\\main\\resources\\DataSet\\spamdata.txt"));
             while(sp.hasNext()) {
                 String str = sp.nextLine();
                 learnPositive(str);
             }  
-            sp.close();          
+            sp.close(); 
+                      
+            Scanner twhm = new Scanner(new File("src\\main\\resources\\DataSet\\twitterham.txt"));
+            while(twhm.hasNext()) {
+                String str = twhm.nextLine();
+                learnNegative(str);
+            }
+            twhm.close();          
+            
+            Scanner twsp = new Scanner(new File("src\\main\\resources\\DataSet\\twitterspam.txt"));
+            while(twsp.hasNext()) {
+                String str = twsp.nextLine();
+                learnPositive(str);
+            }  
+            twsp.close();    
+            
+            Scanner emhm = new Scanner(new File("src\\main\\resources\\DataSet\\emailham.txt"));
+            while(emhm.hasNext()) {
+                String str = emhm.nextLine();
+                learnNegative(str);
+            }
+            emhm.close();          
+            
+            Scanner emsp = new Scanner(new File("src\\main\\resources\\DataSet\\emailspam.txt"));
+            while(emsp.hasNext()) {
+                String str = emsp.nextLine();
+                learnPositive(str);
+            }  
+            emsp.close();            
         } catch (Exception e) {
             System.out.println("Error in Training Model");
         }
@@ -71,7 +111,7 @@ public class SpamDetection {
         bayes.learn("positive", Arrays.asList(positiveText));
     }
     
-    // Content not labelled as SPAM
+    // Content labelled as not SPAM
     public void learnNegative(String str) {
         String[] negativeText = str.split("\\s");
         bayes.learn("negative", Arrays.asList(negativeText));
@@ -79,10 +119,38 @@ public class SpamDetection {
     
     public boolean classifySpam(String str) {
         String[] unknownText = str.split("\\s");
-        if(bayes.classify(Arrays.asList(unknownText)).getCategory().equals("positive")) {
-            return true;
-        } else {
-            return false;
-        }
+        return bayes.classify(Arrays.asList(unknownText)).getCategory().equals("positive");
     }
+    
+    public static void main(String[] args) {
+        SpamDetection spam = new SpamDetection();
+        
+        int count = 0;
+        int tru = 0;
+        int fal = 0;
+        
+        try {
+            Scanner sc = new Scanner(new File("src\\main\\resources\\DataSet\\emailspam.txt"));
+            while(sc.hasNext()) {
+                String temp = sc.nextLine();
+                System.out.println(spam.classifySpam(temp) + "  " +temp);
+                if(spam.classifySpam(temp)) tru++;
+                else fal++;
+                count++;
+            } 
+        } catch (Exception e) {
+            System.out.println("Error in Testing model");
+        }
+        
+        System.out.println("");
+        System.out.println(count);
+        System.out.println("True count: " + tru);
+        System.out.println("False count: " + fal);
+        System.out.println("");
+        
+        String str = "Is this a spam";
+        System.out.println(str);
+        System.out.println(spam.classifySpam(str));
+        System.out.println("");
+    }   
 }

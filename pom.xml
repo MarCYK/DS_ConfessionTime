@@ -83,7 +83,12 @@
             <artifactId>Java-Naive-Bayes-Classifier</artifactId>
             <version>1.0.7</version>
         </dependency>    
-
+        <dependency>
+            <groupId>info.debatty</groupId>
+            <artifactId>java-string-similarity</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+        
     </dependencies>
 
     <build>
