@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.FlaggedPostsController">
+    <stylesheets>
+        <URL value="@/styles/waitinglist.css" />
+    </stylesheets>
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616540" height="540.0" stroke="TRANSPARENT" strokeType="INSIDE" width="840.0" />
+      <Label layoutX="586.0" layoutY="36.0" text="Spam Posts" textFill="WHITE">
+         <font>
+            <Font name="DINEngschriftStd" size="59.0" />
+         </font>
+      </Label>
+      <TextField layoutX="257.0" layoutY="130.0" />
+      <Label layoutX="182.0" layoutY="134.0" text="Replying To" textFill="WHITE" />
+      <TextArea layoutX="182.0" layoutY="178.0" prefHeight="200.0" prefWidth="619.0" />
+      <RadioButton layoutX="717.0" layoutY="421.0" mnemonicParsing="false" text="Verify" textFill="WHITE" />
+      <RadioButton layoutX="717.0" layoutY="448.0" mnemonicParsing="false" text="Delete" textFill="WHITE" />
+      <Button layoutX="656.0" layoutY="130.0" mnemonicParsing="false" text="&lt;&lt; Go To Flagged Posts">
+         <effect>
+            <SepiaTone />
+         </effect></Button>
+      <Button layoutX="323.0" layoutY="465.0" mnemonicParsing="false" text="NEXT">
+         <effect>
+            <SepiaTone />
+         </effect></Button>
+      <Button layoutX="180.0" layoutY="465.0" mnemonicParsing="false" text="PREV">
+         <effect>
+            <SepiaTone />
+         </effect></Button>
+      <TextField alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
+      <Button fx:id="Confirm" layoutX="717.0" layoutY="490.0" mnemonicParsing="false" onAction="#confirmButton" text="CONFIRM">
+         <effect>
+            <SepiaTone />
+         </effect></Button>
+   </children>
+</AnchorPane>
