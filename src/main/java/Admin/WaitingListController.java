@@ -63,11 +63,7 @@ public class WaitingListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 	setPost();
-	try{
-	    total = sql.count("waitinglist", conn);
-	}catch(Exception e){
-	    JOptionPane.showMessageDialog(null, e.getMessage());
-	}
+	total = sql.count("waitinglist", conn);
 	page.setText(counter+"/"+total);
     }    
 
@@ -91,7 +87,8 @@ public class WaitingListController implements Initializable {
 
     @FXML
     private void nextButton(ActionEvent event) {
-	if(counter==total)
+	total = sql.count("waitinglist", conn);
+	if(counter>=total)
 	    JOptionPane.showMessageDialog(null, "This is the last page");
 	else
 	    {
@@ -106,11 +103,15 @@ public class WaitingListController implements Initializable {
     private void replyID(ActionEvent event) {
 	int offset = counter-1;
 	try{
+	    if(sql.count("waitinglist", conn)==0){
+		JOptionPane.showMessageDialog(null, "It is empty here :(");
+	    }else{
+		ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+		reply.setText("#"+rs.getString("replyID"));
+		if(reply.getText().equals("#null"))
+		    reply.setText("none");
+	    }
 	    
-	    ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
-	    reply.setText("#"+rs.getString("replyID"));
-	    if(reply.getText().equals("#null"))
-		reply.setText("none");
 	}catch(Exception e){
 	    JOptionPane.showMessageDialog(null, e.getMessage());
 	}
@@ -121,9 +122,11 @@ public class WaitingListController implements Initializable {
     private void content(MouseEvent event) {
 	int offset = counter-1;
 	try{
+	    if(sql.count("waitinglist", conn)!=0){
+		ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+		contentBox.setText("#"+rs.getString("thisID")+"\n\n"+rs.getString("content"));
+	    }
 	    
-	    ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
-	    contentBox.setText("#"+rs.getString("thisID")+"\n\n"+rs.getString("content"));
 	}catch(Exception e){
 	    JOptionPane.showMessageDialog(null, e.getMessage());
 	}
@@ -131,7 +134,8 @@ public class WaitingListController implements Initializable {
 
     @FXML
     private void prevButton(ActionEvent event) {
-	if(counter==1){
+	total = sql.count("waitinglist", conn);
+	if(counter<=1){
 	    JOptionPane.showMessageDialog(null, "This is the First Page");
 	}else{
 	    counter--;
