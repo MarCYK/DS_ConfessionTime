@@ -6,7 +6,9 @@ package User;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 
 /**
  * FXML Controller class
@@ -14,6 +16,9 @@ import javafx.fxml.Initializable;
  * @author pirvi
  */
 public class LoginPageController implements Initializable {
+
+    @FXML
+    private Button loginAdmin;
 
     /**
      * Initializes the controller class.
