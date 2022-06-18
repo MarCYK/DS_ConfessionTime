@@ -18,7 +18,7 @@ public class Tag {
             ResultSet rs = mysql.sqlSelect("select * from node order by id desc limit 1", conn);rs.next();
             tag = Integer.parseInt(rs.getString("id")) + 1;
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "u got error btw lmao\n\n"+e.getMessage());
+            JOptionPane.showMessageDialog(null, "u got error btw lmao (tag error)\n\n"+e.getMessage());
         }
         String formatted = String.format("%05d", tag);
         this.thisID = "#UM" + formatted;

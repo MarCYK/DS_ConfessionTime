@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.FlaggedPostsController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.SpamPostsController">
     <stylesheets>
         <URL value="@/styles/waitinglist.css" />
     </stylesheets>
@@ -27,7 +27,7 @@
       <TextArea layoutX="182.0" layoutY="178.0" prefHeight="200.0" prefWidth="619.0" />
       <RadioButton layoutX="717.0" layoutY="421.0" mnemonicParsing="false" text="Verify" textFill="WHITE" />
       <RadioButton layoutX="717.0" layoutY="448.0" mnemonicParsing="false" text="Delete" textFill="WHITE" />
-      <Button layoutX="656.0" layoutY="130.0" mnemonicParsing="false" text="&lt;&lt; Go To Flagged Posts">
+      <Button fx:id="gotoWaiting" layoutX="656.0" layoutY="130.0" mnemonicParsing="false" onAction="#loadWaiting" text="Go To Waiting List &gt;&gt;">
          <effect>
             <SepiaTone />
          </effect></Button>

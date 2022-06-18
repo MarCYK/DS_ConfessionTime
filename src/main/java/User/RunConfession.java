@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import SQLOperations.waitingListPop;
 
 
 public class RunConfession extends Application {
@@ -13,11 +14,11 @@ public class RunConfession extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Submission.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/WaitingList.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage.fxml"));
 
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
-        scene.getStylesheets().add("/styles/waitinglist.css");
+        scene.getStylesheets().add("/styles/welcomepage.css");
 
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
@@ -34,6 +35,9 @@ public class RunConfession extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+	
+	waitingListPop pop = new waitingListPop();
+	pop.start();
     }
 
 }

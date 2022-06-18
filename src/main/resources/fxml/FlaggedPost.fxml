@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.FlaggedPostsController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.FlaggedPostsController">
     <stylesheets>
         <URL value="@/styles/waitinglist.css" />
     </stylesheets>
@@ -27,7 +27,7 @@
       <TextArea layoutX="182.0" layoutY="178.0" prefHeight="200.0" prefWidth="619.0" />
       <RadioButton layoutX="717.0" layoutY="421.0" mnemonicParsing="false" text="Unflag" textFill="WHITE" />
       <RadioButton layoutX="717.0" layoutY="448.0" mnemonicParsing="false" text="Delete" textFill="WHITE" />
-      <Button layoutX="668.0" layoutY="130.0" mnemonicParsing="false" text="Go To Spam Posts &gt;&gt;">
+      <Button fx:id="loadSpam" layoutX="668.0" layoutY="130.0" mnemonicParsing="false" onAction="#gotoSpam" text="Go To Spam Posts &gt;&gt;">
          <effect>
             <SepiaTone />
          </effect></Button>
@@ -40,11 +40,6 @@
             <SepiaTone />
          </effect></Button>
       <TextField alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
-      <Button layoutX="511.0" layoutY="130.0" mnemonicParsing="false" text="&lt;&lt; Go To Waiting List">
-         <effect>
-            <SepiaTone />
-         </effect>
-      </Button>
       <Button fx:id="Confirm" layoutX="717.0" layoutY="490.0" mnemonicParsing="false" onAction="#confirmButton" text="CONFIRM">
          <effect>
             <SepiaTone />

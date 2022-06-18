@@ -14,7 +14,7 @@ public class operationTest {
     public Connection getConnection(){
 	final String user = "root";
 //        final String pass = "rotikeju";
-        final String pass = "SaA_SDK0201";
+        final String pass = "rotikeju";
         final String path = "jdbc:mysql://localhost:3306/confession";
 
         final String driver = "com.mysql.cj.jdbc.Driver";

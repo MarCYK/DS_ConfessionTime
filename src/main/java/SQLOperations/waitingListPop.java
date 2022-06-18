@@ -18,19 +18,20 @@ import javax.swing.JOptionPane;
  */
 public class waitingListPop {
     
-    
-    
     public static void main(String[] args) {
+	start();
+    }
+    
+    public static void start() {
 	timeClass time = new timeClass();
         Tag tag = new Tag();
 	operationTest mysql = new operationTest();
 	try{
 	    Connection conn = mysql.getConnection();
-	    String isEmpty = "select * from waitinglist where exists(select * from waitinglist limit 1)";
-	    while(mysql.sqlSelect(isEmpty, conn).next()){
+	    while(true){
 		ResultSet rs = mysql.sqlSelect("select * from waitinglist limit 1", conn);rs.next();				    //Select first row from waiting list
-		mysql.sqlAddTo(tag.makeTag(), rs.getString("replyID"), rs.getString("content"), rs.getString("date"), "node", conn); //Copy the first row to node
-		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\n"+rs.getString("date"));
+		mysql.sqlAddTo(tag.makeTag(), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
+		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\n"+time.timeNow());
 		mysql.sqlDelete("delete from waitinglist limit 1", conn);							    //Delete first row from waiting list
 		System.out.println("test");
 		if(mysql.count("waitinglist", conn)>10){									    //Delay time depends on waiting list's size
@@ -44,7 +45,7 @@ public class waitingListPop {
 		}
 		
 	    }
-	    JOptionPane.showMessageDialog(null, "The waiting list is now empty");
+	    
 	    
 	}catch(HeadlessException | InterruptedException | SQLException e){
 	    JOptionPane.showMessageDialog(null, "u got error btw lmao\n\n"+e.getMessage());

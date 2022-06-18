@@ -1,10 +1,10 @@
-package Admin;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
+package User;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,6 +19,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
@@ -28,46 +30,46 @@ import javafx.util.Duration;
  *
  * @author Irfan
  */
-public class FlaggedPostsController implements Initializable {
+public class WelcomePageController implements Initializable {
 
     @FXML
-    private Button Confirm;
+    private ImageView imageBg;
     @FXML
-    private Button loadSpam;
+    private Button admin;
     @FXML
-    private AnchorPane AnchorPane;
+    private AnchorPane anchorPane;
+    @FXML
+    private StackPane Stack;
+   
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-	// TODO
+	
     }    
 
     @FXML
-    private void confirmButton(ActionEvent event) {
-    }
-
-    @FXML
-    private void gotoSpam(ActionEvent event) throws IOException {
-	Parent root = FXMLLoader.load(getClass().getResource("/fxml/SpamPost.fxml"));
-        Scene scene = loadSpam.getScene();
+    private void adminSign(ActionEvent event) throws IOException {
+	Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Scene scene = admin.getScene();
         root.translateXProperty().set(scene.getWidth());
+	anchorPane.translateXProperty().set(scene.getWidth());
 
-        StackPane parentContainer = (StackPane) loadSpam.getScene().getRoot();
-
-        parentContainer.getChildren().add(root);
+        Stack.getChildren().add(root);
 
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+	KeyValue kv1 = new KeyValue(anchorPane.translateXProperty(), 0, Interpolator.DISCRETE);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+	KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
+	timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
-            parentContainer.getChildren().remove(AnchorPane);
+            Stack.getChildren().remove(anchorPane);
         });
         timeline.play();
     }
-
     
 }
