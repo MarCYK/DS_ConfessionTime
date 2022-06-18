@@ -61,7 +61,7 @@
                   <Font name="Ebrima" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="223.0" layoutY="478.0" onMouseClicked="#open_registration" text="Signup">
+            <Label fx:id="signup" layoutX="223.0" layoutY="478.0" onMouseClicked="#open_registration" text="Signup">
                <font>
                   <Font name="Ebrima" size="14.0" />
                </font>
