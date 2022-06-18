@@ -1,4 +1,4 @@
-package Spam;
+package Engine;
 
 /**
  * Implementing Spam Detection using Bayes classification Method
@@ -125,30 +125,30 @@ public class SpamDetection {
     public static void main(String[] args) {
         SpamDetection spam = new SpamDetection();
         
-        int count = 0;
-        int tru = 0;
-        int fal = 0;
+//        int count = 0;
+//        int tru = 0;
+//        int fal = 0;
+//        
+//        try {
+//            Scanner sc = new Scanner(new File("src\\main\\resources\\DataSet\\emailspam.txt"));
+//            while(sc.hasNext()) {
+//                String temp = sc.nextLine();
+//                System.out.println(spam.classifySpam(temp) + "  " +temp);
+//                if(spam.classifySpam(temp)) tru++;
+//                else fal++;
+//                count++;
+//            } 
+//        } catch (Exception e) {
+//            System.out.println("Error in Testing model");
+//        }
+//        
+//        System.out.println("");
+//        System.out.println(count);
+//        System.out.println("True count: " + tru);
+//        System.out.println("False count: " + fal);
+//        System.out.println("");
         
-        try {
-            Scanner sc = new Scanner(new File("src\\main\\resources\\DataSet\\emailspam.txt"));
-            while(sc.hasNext()) {
-                String temp = sc.nextLine();
-                System.out.println(spam.classifySpam(temp) + "  " +temp);
-                if(spam.classifySpam(temp)) tru++;
-                else fal++;
-                count++;
-            } 
-        } catch (Exception e) {
-            System.out.println("Error in Testing model");
-        }
-        
-        System.out.println("");
-        System.out.println(count);
-        System.out.println("True count: " + tru);
-        System.out.println("False count: " + fal);
-        System.out.println("");
-        
-        String str = "Is this a spam";
+        String str = "obama last name is ";
         System.out.println(str);
         System.out.println(spam.classifySpam(str));
         System.out.println("");
