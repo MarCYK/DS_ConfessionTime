@@ -45,7 +45,7 @@ public class RepostDetection {
     
     public static void main(String[] args) {
         RepostDetection rp = new RepostDetection();
-        String str = "tset Abobe CreativeSi1te 5 M1ster C0llection fr0m chaep 4zp";
+        String str = "c0nt3nt";
         System.out.println(rp.checkRepost(str));
     }
 }

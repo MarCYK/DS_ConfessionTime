@@ -29,11 +29,21 @@ public class waitingListPop {
 	try{
 	    Connection conn = mysql.getConnection();
 	    
-	    ResultSet rs = mysql.sqlSelect("select * from waitinglist limit 1", conn);rs.next();				    //Select first row from waiting list
-	    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
-	    System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\n"+time.timeNow());
-	    mysql.sqlDelete("delete from waitinglist limit 1", conn);							    //Delete first row from waiting list
-	    System.out.println("test");
+	    if(mysql.count("waitinglist", conn)!=0){
+		ResultSet rs = mysql.sqlSelect("select * from waitinglist limit 1", conn);rs.next();				    //Select first row from waiting list
+		if(rs.getString("status").equals("1")){
+		    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
+		}
+		else if(rs.getString("status").equals("0")){
+		    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "spam", conn);
+		}
+		else{
+		    JOptionPane.showMessageDialog(null, "update error");
+		}
+		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\n"+time.timeNow());
+		mysql.sqlDelete("delete from waitinglist limit 1", conn);							    //Delete first row from waiting list
+		System.out.println("test");
+	    }
 		
 	    
 	    
