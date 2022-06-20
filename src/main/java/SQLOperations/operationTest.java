@@ -6,6 +6,7 @@ package SQLOperations;
 import java.sql.*;
 //import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
+import org.apache.commons.validator.routines.EmailValidator;
 /**
  *
  * @author Irfan
@@ -13,8 +14,8 @@ import javax.swing.JOptionPane;
 public class operationTest {
     public Connection getConnection(){
 	final String user = "root";
-//        final String pass = "rotikeju";
-        final String pass = "Pirvin@2510";
+        final String pass = "rotikeju";
+//        final String pass = "Pirvin@2510";
         final String path = "jdbc:mysql://localhost:3306/confession";
 
         final String driver = "com.mysql.cj.jdbc.Driver";
@@ -88,4 +89,10 @@ public class operationTest {
 	
 	
     }
+    
+    public boolean isValidEmail(String email) {
+	EmailValidator validator = EmailValidator.getInstance();
+	return validator.isValid(email);
+    }
+    
 }

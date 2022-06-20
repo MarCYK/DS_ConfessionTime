@@ -20,6 +20,7 @@ import javafx.scene.layout.StackPane;
 import SQLOperations.operationTest;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -34,6 +35,7 @@ public class WaitingListController implements Initializable {
     private StackPane parentContainer;
     private int counter = 1;
     private int total = 1;
+    private String currentID = "";
     
     @FXML
     private TextField reply;
@@ -43,6 +45,9 @@ public class WaitingListController implements Initializable {
     private Button prev;
     @FXML
     private TextField page;
+    @FXML
+    private TextField status;
+    
 
     public StackPane getParentContainer() {
 	return parentContainer;
@@ -65,6 +70,7 @@ public class WaitingListController implements Initializable {
 	setPost();
 	total = sql.count("waitinglist", conn);
 	page.setText(counter+"/"+total);
+	statusUpdate();
     }    
 
     @FXML
@@ -88,14 +94,17 @@ public class WaitingListController implements Initializable {
     @FXML
     private void nextButton(ActionEvent event) {
 	total = sql.count("waitinglist", conn);
-	if(counter>=total)
+	if(counter>=total){
 	    JOptionPane.showMessageDialog(null, "This is the last page");
+	    counter = total;
+	}
 	else
 	    {
 		counter++;
 		setPost();
-		page.setText(counter+"/"+total);
 	    }
+	page.setText(counter+"/"+total);
+	statusUpdate();
 	
     }
 
@@ -104,10 +113,11 @@ public class WaitingListController implements Initializable {
 	int offset = counter-1;
 	try{
 	    if(sql.count("waitinglist", conn)==0){
-		JOptionPane.showMessageDialog(null, "It is empty here :(");
+		reply.setText("It Is Empty Here :(");
 	    }else{
 		ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
 		reply.setText("#"+rs.getString("replyID"));
+		currentID = rs.getString("thisID");
 		if(reply.getText().equals("#null"))
 		    reply.setText("none");
 	    }
@@ -137,11 +147,14 @@ public class WaitingListController implements Initializable {
 	total = sql.count("waitinglist", conn);
 	if(counter<=1){
 	    JOptionPane.showMessageDialog(null, "This is the First Page");
+	    counter = 1;
 	}else{
 	    counter--;
 	    setPost();
-	    page.setText(counter+"/"+total);
+	    
 	}
+	page.setText(counter+"/"+total);
+	statusUpdate();
     }
 
     @FXML
@@ -152,5 +165,50 @@ public class WaitingListController implements Initializable {
 	content(null);
 	replyID(null);
     }
+
+
+    @FXML
+    private void verifyButton(ActionEvent event) {
+	int offset = counter-1;
+	
+	try{
+	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? where thisID = '"+currentID+"'");
+	    prp.setString(1, "1");
+	    prp.executeUpdate();
+	}catch(Exception e){
+	    JOptionPane.showMessageDialog(null, e.getMessage());
+	}
+	status.setText("Verify");
+    }
+
+    @FXML
+    private void spamButton(ActionEvent event) {
+	int offset = counter-1;
+	
+	try{
+	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? where thisID = '"+currentID+"'");
+	    prp.setString(1, "0");
+	    prp.executeUpdate();
+	}catch(Exception e){
+	    JOptionPane.showMessageDialog(null, e.getMessage());
+	}
+	status.setText("Spam");
+    }
+    
+    private void statusUpdate(){
+	int offset = counter-1;
+	try{
+	    ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+	    if(rs.getString("status").equals("1")){
+		status.setText("Verified");
+	    }else
+		status.setText("Spam");
+	}catch(Exception e){
+	    
+	}
+    }
+
+    
+
     
 }

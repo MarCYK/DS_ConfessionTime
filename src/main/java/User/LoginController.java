@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import SQLOperations.operationTest;
+import java.io.IOException;
 import java.sql.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -69,12 +70,22 @@ public class LoginController implements Initializable {
 		JOptionPane.showMessageDialog(null, "Invalid Credentials");
 	    }
 	}catch(Exception e){
-	    
+	    JOptionPane.showMessageDialog(null, "login"+e.getMessage());
 	}
     }
 
     @FXML
-    private void signupButton(MouseEvent event) {
+    private void signupButton(MouseEvent event) throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("/fxml/RegistrationUi.fxml"));
+
+		Scene scene = new Scene(root);
+	//        scene.getStylesheets().add("/styles/submission.css");
+		scene.getStylesheets().add("/styles/waitinglist.css");
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+		stage.setTitle("JavaFX and Maven");
+		stage.setScene(scene);
+		stage.show();
     }
     
 }

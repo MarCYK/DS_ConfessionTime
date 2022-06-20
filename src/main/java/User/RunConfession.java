@@ -21,7 +21,7 @@ public class RunConfession extends Application {
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
         scene.getStylesheets().add("/styles/welcomepage.css");
-
+	stage.setResizable(false);
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();
