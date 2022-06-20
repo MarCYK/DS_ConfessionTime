@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.ArrayList;
 import de.daslaboratorium.machinelearning.classifier.bayes.BayesClassifier;
 import de.daslaboratorium.machinelearning.classifier.Classifier;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 /* INTERFACE
 The abstract Classifier<T, K> serves as a base for the concrete BayesClassifier<T, K>. Here are its methods. Please also refer to the Javadoc.
@@ -99,7 +103,21 @@ public class SpamDetection {
                 String str = emsp.nextLine();
                 learnPositive(str);
             }  
-            emsp.close();            
+            emsp.close();    
+            
+            Scanner newhm = new Scanner(new File("src\\main\\resources\\DataSet\\newham.txt"));
+            while(newhm.hasNext()) {
+                String str = newhm.nextLine();
+                learnNegative(str);
+            }
+            newhm.close();          
+            
+            Scanner newsp = new Scanner(new File("src\\main\\resources\\DataSet\\newspam.txt"));
+            while(newsp.hasNext()) {
+                String str = newsp.nextLine();
+                learnPositive(str);
+            }  
+            newsp.close();  
         } catch (Exception e) {
             System.out.println("Error in Training Model");
         }
@@ -119,8 +137,29 @@ public class SpamDetection {
     
     public boolean classifySpam(String str) {
         String[] unknownText = str.split("\\s");
+        //save posts to train in future posts
+        if(bayes.classify(Arrays.asList(unknownText)).getCategory().equals("positive")) {
+            Path p = Paths.get("src\\main\\resources\\DataSet\\newspam.txt");
+            String s = System.lineSeparator() + str;
+            try (BufferedWriter writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND)) {
+                writer.write(s);
+            } catch (IOException ioe) {
+                System.err.format("IOException: %s%n", ioe);
+            }
+        } else {
+            Path p = Paths.get("src\\main\\resources\\DataSet\\newham.txt");
+            String s = System.lineSeparator() + str;
+            try (BufferedWriter writer = Files.newBufferedWriter(p, StandardOpenOption.APPEND)) {
+                writer.write(s);
+            } catch (IOException ioe) {
+                System.err.format("IOException: %s%n", ioe);
+            }
+        }
+            
         return bayes.classify(Arrays.asList(unknownText)).getCategory().equals("positive");
     }
+    
+    
     
     public static void main(String[] args) {
         SpamDetection spam = new SpamDetection();
@@ -148,7 +187,7 @@ public class SpamDetection {
 //        System.out.println("False count: " + fal);
 //        System.out.println("");
         
-        String str = "obama last name is ";
+        String str = "Trump BLM obama";
         System.out.println(str);
         System.out.println(spam.classifySpam(str));
         System.out.println("");
