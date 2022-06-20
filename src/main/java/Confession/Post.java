@@ -12,6 +12,7 @@ public class Post{
     private String thisID;
     private String content;
     private Timestamp date;
+    private String dateOnly;
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH.mmaa");
 
     public Post(String content) {
@@ -19,6 +20,8 @@ public class Post{
         this.thisID = tag.makeTag();
         this.content = content;
         this.date = new Timestamp(System.currentTimeMillis());
+        String[] temp = (date.toString()).split("\\s");
+        String dateOnly = temp[0];
     }
 
     public Post(String thisID, String content, Timestamp date) {
@@ -26,6 +29,8 @@ public class Post{
         this.thisID = tag.makeTag();
         this.content = content;
         this.date = new Timestamp(System.currentTimeMillis());
+        String[] temp = (date.toString()).split("\\s");
+        String dateOnly = temp[0];
     }
     
     
@@ -53,6 +58,14 @@ public class Post{
 
     public void setDate(Timestamp date) {
         this.date = new Timestamp(System.currentTimeMillis());
+    }
+
+    public String getDateOnly() {
+        return dateOnly;
+    }
+
+    public void setDateOnly(String dateOnly) {
+        this.dateOnly = dateOnly;
     }
 
     @Override
