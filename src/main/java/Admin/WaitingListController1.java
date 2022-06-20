@@ -29,13 +29,12 @@ import javafx.scene.control.TextField;
  *
  * @author Irfan
  */
-public class WaitingListController implements Initializable {
+public class WaitingListController1 implements Initializable {
 
     @FXML
     private StackPane parentContainer;
     private int counter = 1;
     private int total = 1;
-    private String currentID = "";
     
     @FXML
     private TextField reply;
@@ -117,7 +116,6 @@ public class WaitingListController implements Initializable {
 	    }else{
 		ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
 		reply.setText("#"+rs.getString("replyID"));
-		currentID = rs.getString("thisID");
 		if(reply.getText().equals("#null"))
 		    reply.setText("none");
 	    }
@@ -172,8 +170,7 @@ public class WaitingListController implements Initializable {
 	int offset = counter-1;
 	
 	try{
-	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? limit 1 offset "+Integer.toString(offset)+"");
-	    prp.setString(1, "1");
+	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = 1 where offset "+Integer.toString(offset)+"");
 	    prp.executeUpdate();
 	}catch(Exception e){
 	    JOptionPane.showMessageDialog(null, e.getMessage());
@@ -186,8 +183,7 @@ public class WaitingListController implements Initializable {
 	int offset = counter-1;
 	
 	try{
-	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? limit 1 offset "+Integer.toString(offset)+"");
-	    prp.setString(1, "0");
+	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = 0 where offset "+Integer.toString(offset)+"");
 	    prp.executeUpdate();
 	}catch(Exception e){
 	    JOptionPane.showMessageDialog(null, e.getMessage());
@@ -198,8 +194,8 @@ public class WaitingListController implements Initializable {
     private void statusUpdate(){
 	int offset = counter-1;
 	try{
-	    ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
-	    if(rs.getString("status").equals("1")){
+	    ResultSet rs = sql.sqlSelect("select * from waitinglist where offset "+String.valueOf(offset)+"", conn);
+	    if(rs.getString("status")=="1"){
 		status.setText("Verified");
 	    }else
 		status.setText("Spam");

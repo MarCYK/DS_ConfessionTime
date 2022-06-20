@@ -2,7 +2,6 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.TextArea?>
@@ -13,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.WaitingListController">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.WaitingListController1">
    <children>
       <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass">
           <stylesheets>
@@ -51,7 +50,9 @@
             </Button>
             <TextField fx:id="page" alignment="CENTER" editable="false" layoutX="239.0" layoutY="465.0" onAction="#pageIndicator" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
             <StackPane prefHeight="150.0" prefWidth="200.0" />
-            <ComboBox fx:id="status" layoutX="651.0" layoutY="465.0" onAction="#statusBox" prefWidth="150.0" />
+            <TextField fx:id="status" layoutX="654.0" layoutY="440.0" />
+            <Button layoutX="656.0" layoutY="478.0" mnemonicParsing="false" onAction="#verifyButton" prefHeight="25.0" prefWidth="63.0" text="VERIFY" />
+            <Button layoutX="729.0" layoutY="478.0" mnemonicParsing="false" onAction="#spamButton" prefHeight="25.0" prefWidth="63.0" text="SPAM" />
          </children>
       </AnchorPane>
    </children>

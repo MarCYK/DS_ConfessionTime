@@ -15,9 +15,9 @@
     </stylesheets>
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#276165" height="400.0" layoutX="310.0" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
-      <Label layoutX="394.0" layoutY="25.0" prefHeight="69.0" prefWidth="188.0" text="Log In" textFill="WHITE">
+      <Label layoutX="426.0" layoutY="55.0" prefHeight="69.0" prefWidth="125.0" text="Log In" textFill="WHITE">
          <font>
-            <Font name="Cascadia Code Regular" size="47.0" />
+            <Font name="Calibri" size="47.0" />
          </font>
       </Label>
       <TextField fx:id="id" layoutX="413.0" layoutY="156.0" />

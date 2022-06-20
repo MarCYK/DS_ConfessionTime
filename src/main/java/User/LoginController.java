@@ -70,7 +70,7 @@ public class LoginController implements Initializable {
 		JOptionPane.showMessageDialog(null, "Invalid Credentials");
 	    }
 	}catch(Exception e){
-	    
+	    JOptionPane.showMessageDialog(null, "login"+e.getMessage());
 	}
     }
 

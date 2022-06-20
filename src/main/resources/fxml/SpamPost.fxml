@@ -22,24 +22,24 @@
             <Font name="DINEngschriftStd" size="59.0" />
          </font>
       </Label>
-      <TextField layoutX="257.0" layoutY="130.0" />
+      <TextField fx:id="reply" editable="false" layoutX="257.0" layoutY="130.0" onAction="#replyID" />
       <Label layoutX="182.0" layoutY="134.0" text="Replying To" textFill="WHITE" />
-      <TextArea layoutX="182.0" layoutY="178.0" prefHeight="200.0" prefWidth="619.0" />
+      <TextArea fx:id="contentBox" editable="false" layoutX="182.0" layoutY="178.0" onDragDetected="#content" prefHeight="200.0" prefWidth="619.0" />
       <RadioButton layoutX="717.0" layoutY="421.0" mnemonicParsing="false" text="Verify" textFill="WHITE" />
       <RadioButton layoutX="717.0" layoutY="448.0" mnemonicParsing="false" text="Delete" textFill="WHITE" />
       <Button fx:id="gotoWaiting" layoutX="656.0" layoutY="130.0" mnemonicParsing="false" onAction="#loadWaiting" text="Go To Waiting List &gt;&gt;">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button layoutX="323.0" layoutY="465.0" mnemonicParsing="false" text="NEXT">
+      <Button fx:id="next" layoutX="323.0" layoutY="465.0" mnemonicParsing="false" onAction="#nextButton" text="NEXT">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button layoutX="180.0" layoutY="465.0" mnemonicParsing="false" text="PREV">
+      <Button fx:id="prev" layoutX="180.0" layoutY="465.0" mnemonicParsing="false" onAction="#prevButton" text="PREV">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <TextField alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
+      <TextField fx:id="page" alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
       <Button fx:id="Confirm" layoutX="717.0" layoutY="490.0" mnemonicParsing="false" onAction="#confirmButton" text="CONFIRM">
          <effect>
             <SepiaTone />
