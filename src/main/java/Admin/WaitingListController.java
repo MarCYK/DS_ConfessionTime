@@ -112,7 +112,7 @@ public class WaitingListController implements Initializable {
 	int offset = counter-1;
 	try{
 	    if(sql.count("waitinglist", conn)==0){
-		JOptionPane.showMessageDialog(null, "It is empty here :(");
+		reply.setText("It Is Empty Here :(");
 	    }else{
 		ResultSet rs = sql.sqlSelect("select * from waitinglist limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
 		reply.setText("#"+rs.getString("replyID"));

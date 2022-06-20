@@ -2,9 +2,9 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.SepiaTone?>
@@ -34,8 +34,6 @@
                   <SepiaTone />
                </effect>
             </ProgressBar>
-            <RadioButton layoutX="717.0" layoutY="442.0" mnemonicParsing="false" text="Verify" textFill="WHITE" />
-            <RadioButton layoutX="717.0" layoutY="468.0" mnemonicParsing="false" text="Deny" textFill="WHITE" />
             <Button fx:id="Button" layoutX="656.0" layoutY="130.0" mnemonicParsing="false" onAction="#loadFlag" text="Go To Flagged Posts &gt;&gt;">
                <effect>
                   <SepiaTone />
@@ -53,6 +51,7 @@
             </Button>
             <TextField fx:id="page" alignment="CENTER" editable="false" layoutX="239.0" layoutY="465.0" onAction="#pageIndicator" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
             <StackPane prefHeight="150.0" prefWidth="200.0" />
+            <ComboBox fx:id="status" layoutX="651.0" layoutY="465.0" onAction="#statusBox" prefWidth="150.0" />
          </children>
       </AnchorPane>
    </children>

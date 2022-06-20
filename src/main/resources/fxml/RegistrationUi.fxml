@@ -33,11 +33,11 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField layoutX="56.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Enter Username" />
-      <PasswordField layoutX="56.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Email" />
-      <TextField layoutX="56.0" layoutY="299.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" />
-      <TextField layoutX="56.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Confirm Password" />
-      <Button layoutX="44.0" layoutY="433.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="50.0" prefWidth="323.0" styleClass="loginBtn" text="Register" textFill="#080808">
+      <TextField fx:id="username" layoutX="56.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Enter Username" />
+      <PasswordField fx:id="email" accessibleRole="TEXT_FIELD" layoutX="56.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Email" />
+      <TextField fx:id="password" accessibleRole="PASSWORD_FIELD" layoutX="56.0" layoutY="299.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Password" />
+      <TextField fx:id="confirmpass" accessibleRole="PASSWORD_FIELD" layoutX="56.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Confirm Password" />
+      <Button fx:id="register" layoutX="44.0" layoutY="493.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registerButton" prefHeight="50.0" prefWidth="323.0" styleClass="loginBtn" text="Register" textFill="#080808">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -50,5 +50,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <TextField fx:id="referralkey" layoutX="55.0" layoutY="408.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0" promptText="Referral Key" />
    </children>
 </AnchorPane>
