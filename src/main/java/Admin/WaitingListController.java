@@ -20,7 +20,6 @@ import javafx.scene.layout.StackPane;
 import SQLOperations.operationTest;
 import javax.swing.JOptionPane;
 import java.sql.*;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -44,9 +43,6 @@ public class WaitingListController implements Initializable {
     private Button prev;
     @FXML
     private TextField page;
-    @FXML
-    private ComboBox<String> status;
-    private String[] str = {"Verified","Spam"};
 
     public StackPane getParentContainer() {
 	return parentContainer;
@@ -66,7 +62,6 @@ public class WaitingListController implements Initializable {
     Connection conn = sql.getConnection();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-	status.getItems().addAll(str);
 	setPost();
 	total = sql.count("waitinglist", conn);
 	page.setText(counter+"/"+total);
@@ -93,17 +88,14 @@ public class WaitingListController implements Initializable {
     @FXML
     private void nextButton(ActionEvent event) {
 	total = sql.count("waitinglist", conn);
-	if(counter>=total){
+	if(counter>=total)
 	    JOptionPane.showMessageDialog(null, "This is the last page");
-	    counter = total;
-	}
 	else
 	    {
 		counter++;
 		setPost();
+		page.setText(counter+"/"+total);
 	    }
-	page.setText(counter+"/"+total);
-
 	
     }
 
@@ -145,13 +137,11 @@ public class WaitingListController implements Initializable {
 	total = sql.count("waitinglist", conn);
 	if(counter<=1){
 	    JOptionPane.showMessageDialog(null, "This is the First Page");
-	    counter = 1;
 	}else{
 	    counter--;
 	    setPost();
-	    
+	    page.setText(counter+"/"+total);
 	}
-	page.setText(counter+"/"+total);
     }
 
     @FXML
@@ -161,10 +151,6 @@ public class WaitingListController implements Initializable {
     private void setPost(){
 	content(null);
 	replyID(null);
-    }
-
-    @FXML
-    private void statusBox(ActionEvent event) {
     }
     
 }
