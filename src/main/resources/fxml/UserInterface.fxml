@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".UserInterfaceController">
+    <stylesheets>
+        <URL value="@/styles/userinterface.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="99.0" layoutY="35.0" prefHeight="18.0" prefWidth="515.0" text="Welcome to Confession Time!">
+         <font>
+            <Font name="Cambria Italic" size="33.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image_Submit" fitHeight="102.0" fitWidth="114.0" layoutX="99.0" layoutY="98.0" onMouseClicked="#ToSubmitPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/User/images/Submit.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image_View" fitHeight="102.0" fitWidth="114.0" layoutX="397.0" layoutY="112.0" onMouseClicked="#ToViewPage" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/User/images/view.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="image_Search" fitHeight="102.0" fitWidth="114.0" layoutX="240.0" layoutY="224.0" onMouseClicked="#ToSearchInterface" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../java/User/images/Search.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="109.0" layoutY="211.0" prefHeight="18.0" prefWidth="54.0" text="Submit">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="435.0" layoutY="211.0" prefHeight="18.0" prefWidth="54.0" text="View">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="272.0" layoutY="339.0" prefHeight="18.0" prefWidth="54.0" text="Search">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
