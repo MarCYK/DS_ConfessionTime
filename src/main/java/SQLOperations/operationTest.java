@@ -6,6 +6,7 @@ package SQLOperations;
 import java.sql.*;
 //import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
+import org.apache.commons.validator.routines.EmailValidator;
 /**
  *
  * @author Irfan
@@ -88,4 +89,10 @@ public class operationTest {
 	
 	
     }
+    
+    public boolean isValidEmail(String email) {
+	EmailValidator validator = EmailValidator.getInstance();
+	return validator.isValid(email);
+    }
+    
 }

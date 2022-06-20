@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.WaitingListController1">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.WaitingListController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="anchorRoot" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass">
           <stylesheets>

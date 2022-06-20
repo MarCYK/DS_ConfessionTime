@@ -172,7 +172,7 @@ public class WaitingListController implements Initializable {
 	int offset = counter-1;
 	
 	try{
-	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? limit 1 offset "+Integer.toString(offset)+"");
+	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? where thisID = '"+currentID+"'");
 	    prp.setString(1, "1");
 	    prp.executeUpdate();
 	}catch(Exception e){
@@ -186,7 +186,7 @@ public class WaitingListController implements Initializable {
 	int offset = counter-1;
 	
 	try{
-	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? limit 1 offset "+Integer.toString(offset)+"");
+	    PreparedStatement prp = conn.prepareStatement("update waitinglist set status = ? where thisID = '"+currentID+"'");
 	    prp.setString(1, "0");
 	    prp.executeUpdate();
 	}catch(Exception e){
