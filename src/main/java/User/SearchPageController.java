@@ -120,6 +120,10 @@ public class SearchPageController implements Initializable {
                         return true;
                     }
                     
+                    else if(Post.getDateOnly().toString().indexOf(search) > -1){
+                        return true;
+                    }
+                    
                     else
                         return false;
                 });
