@@ -120,4 +120,5 @@ public class Search {
     public static boolean checkDateTime(String keyword, String content) {
 	return content.toLowerCase().equals(keyword.toLowerCase());
     }  
+    
 }
