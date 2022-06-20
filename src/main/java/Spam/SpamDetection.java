@@ -39,7 +39,8 @@ The BayesClassifier<T, K> class implements the following abstract method:
 */
 
 /*
-To fix: Find a good facebook spam dataset
+Issue: Spam detection is inaccurate as no good facebook spam dataset is available
+To do: Find a good facebook spam dataset
 */
 public class SpamDetection {    
     // Create a new bayes classifier with string categories and string features.
