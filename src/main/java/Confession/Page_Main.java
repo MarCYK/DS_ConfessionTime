@@ -9,7 +9,7 @@ import SQLOperations.operationTest;
 import java.sql.*;
 import java.util.Scanner;
 
-import Spam.SpamDetection;
+import Engine.SpamDetection;
 import static Confession.util.*;
 import java.io.File;
 public class Page_Main {

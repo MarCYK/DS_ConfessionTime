@@ -4,8 +4,9 @@
  */
 package SQLOperations;
 
+import Confession.Tag;
 import java.sql.*;
-import Spam.SpamDetection;
+import Engine.SpamDetection;
 /**
  *
  * @author Irfan
@@ -18,13 +19,14 @@ public class waitingListPush {
     public static void main(String[] args) {
 	operationTest mysql = new operationTest();
 	timeClass time = new timeClass();
+	Tag tag = new Tag();
 	
 	String thisid = "";
 	String replyid = "";
 	String content = "";
 	try{
 	    Connection conn = mysql.getConnection();
-	    mysql.sqlAddTo(thisid, replyid, content, time.timeNow(), "waitinglist", conn);
+	    mysql.sqlAddTo(tag.makeTag(), replyid, content, time.timeNow(), "waitinglist", conn);
 	    
 	    conn.close();
 	}catch(Exception e){

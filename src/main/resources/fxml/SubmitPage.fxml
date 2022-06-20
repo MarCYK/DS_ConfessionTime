@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.SubmitPageController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.SubmitPageController">
     <stylesheets>
-        <URL value="@/styles/submitpage.css"/>
+        <URL value="@/styles/submitpage.css" />
     </stylesheets>
+   <children>
+      <TextArea fx:id="content" layoutX="67.0" layoutY="121.0" prefHeight="200.0" prefWidth="462.0" promptText="Please enter confession content..." />
+      <Label layoutX="67.0" layoutY="22.0" text="&gt; Please enter the confession post ID you want to reply." />
+      <Label layoutX="67.0" layoutY="40.0" text="&gt; Leave it blank if you don't want to reply a confession post." />
+      <Label layoutX="67.0" layoutY="78.0" text="Reply confession post ID : " />
+      <TextField fx:id="replyID" layoutX="215.0" layoutY="74.0" />
+      <Button fx:id="submit" layoutX="477.0" layoutY="334.0" mnemonicParsing="false" onAction="#submitBtn" prefHeight="18.0" prefWidth="54.0" text="Submit">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
 </AnchorPane>

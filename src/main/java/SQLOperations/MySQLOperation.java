@@ -7,8 +7,8 @@ package SQLOperations;
  * @author Marvin Chin Yi Kai
  */
 import Confession.Tag;
-import Spam.RepostDetection;
-import Spam.SpamDetection;
+import Engine.RepostDetection;
+import Engine.SpamDetection;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.awt.HeadlessException;

@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -70,6 +71,10 @@ public class LoginController implements Initializable {
 	}catch(Exception e){
 	    
 	}
+    }
+
+    @FXML
+    private void signupButton(MouseEvent event) {
     }
     
 }

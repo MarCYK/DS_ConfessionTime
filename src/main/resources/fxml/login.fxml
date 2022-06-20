@@ -26,5 +26,6 @@
       <Label layoutX="368.0" layoutY="201.0" text="PASS" textFill="WHITE" />
       <Button fx:id="login" layoutX="512.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginButton" text="Log In" />
       <PasswordField fx:id="pass" layoutX="414.0" layoutY="197.0" />
+      <Label layoutX="516.0" layoutY="316.0" onMouseClicked="#signupButton" text="Sign Up" textFill="WHITE" />
    </children>
 </AnchorPane>
