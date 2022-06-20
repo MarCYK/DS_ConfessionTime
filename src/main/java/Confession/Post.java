@@ -21,6 +21,15 @@ public class Post{
         this.date = new Timestamp(System.currentTimeMillis());
     }
 
+    public Post(String thisID, String content, Timestamp date) {
+        Tag tag = new Tag();
+        this.thisID = tag.makeTag();
+        this.content = content;
+        this.date = new Timestamp(System.currentTimeMillis());
+    }
+    
+    
+
     public String getThisID() {
         return thisID;
     }
