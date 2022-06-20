@@ -37,8 +37,6 @@ public class SpamPostsController implements Initializable {
     @FXML
     private Button gotoWaiting;
     @FXML
-    private Button Confirm;
-    @FXML
     private AnchorPane AnchorPane;
     @FXML
     private TextField reply;
@@ -50,6 +48,10 @@ public class SpamPostsController implements Initializable {
     private Button prev;
     @FXML
     private TextField page;
+    @FXML
+    private Button verify;
+    @FXML
+    private Button delete;
 
     /**
      * Initializes the controller class.
@@ -81,9 +83,6 @@ public class SpamPostsController implements Initializable {
         timeline.play();
     }
 
-    @FXML
-    private void confirmButton(ActionEvent event) {
-    }
 
     @FXML
     private void replyID(ActionEvent event) {
@@ -148,6 +147,14 @@ public class SpamPostsController implements Initializable {
     private void setPost(){
 	content(null);
 	replyID(null);
+    }
+
+    @FXML
+    private void verifyButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void deleteButton(ActionEvent event) {
     }
     
 }

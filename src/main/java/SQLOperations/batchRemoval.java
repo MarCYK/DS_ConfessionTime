@@ -16,10 +16,10 @@ public class batchRemoval {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-	remove("U2");
+	
     }
     
-    public static void remove(String str){
+    public void remove(String str){
 	operationTest mysql = new operationTest();
 	Connection conn = mysql.getConnection();
 	String statement = "delete from node where thisID = '"+str+"'";

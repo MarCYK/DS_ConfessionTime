@@ -5,7 +5,7 @@ package Admin;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 
-import SQLOperations.operationTest;
+import SQLOperations.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -40,9 +40,8 @@ public class FlaggedPostsController implements Initializable {
     private int total = 1;
     operationTest sql = new operationTest();
     Connection conn = sql.getConnection();
+    String currentID = "";
 
-    @FXML
-    private Button Confirm;
     @FXML
     private Button loadSpam;
     @FXML
@@ -57,6 +56,10 @@ public class FlaggedPostsController implements Initializable {
     private Button prev;
     @FXML
     private TextField page;
+    @FXML
+    private Button unflag;
+    @FXML
+    private Button remove;
 
     /**
      * Initializes the controller class.
@@ -68,9 +71,6 @@ public class FlaggedPostsController implements Initializable {
 	page.setText(counter+"/"+total);
     }    
 
-    @FXML
-    private void confirmButton(ActionEvent event) {
-    }
 
     @FXML
     private void gotoSpam(ActionEvent event) throws IOException {
@@ -100,6 +100,7 @@ public class FlaggedPostsController implements Initializable {
 		reply.setText("It Is Empty Here :(");
 	    }else{
 		ResultSet rs = sql.sqlSelect("select * from spam limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+		currentID = rs.getString("thisID");
 		reply.setText("#"+rs.getString("replyID"));
 		if(reply.getText().equals("#null"))
 		    reply.setText("none");
@@ -156,6 +157,19 @@ public class FlaggedPostsController implements Initializable {
     private void setPost(){
 	content(null);
 	replyID(null);
+    }
+
+    @FXML
+    private void unflagButton(ActionEvent event) {
+	sql.sqlDelete("delete from flag where thisID = '"+currentID+"'", conn);
+	JOptionPane.showMessageDialog(null, "Post Unflagged");
+    }
+
+    @FXML
+    private void removeButton(ActionEvent event) {
+	batchRemoval br = new batchRemoval();
+	br.remove(currentID);
+	JOptionPane.showMessageDialog(null, "Post Deleted");
     }
 
     
