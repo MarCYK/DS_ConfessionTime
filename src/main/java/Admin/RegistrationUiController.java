@@ -26,9 +26,6 @@ import java.sql.*;
 
 
 public class RegistrationUiController implements Initializable {
-
-    
-    
     
     @FXML
     private Button closeBtn;

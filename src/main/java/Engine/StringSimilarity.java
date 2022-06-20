@@ -77,10 +77,7 @@ public class StringSimilarity {
     public static void main(String[] args) {
         StringSimilarity ss = new StringSimilarity();
         isSimilar("");
-        isSimilar("1234567890");
-        isSimilar("1234567890");
-        isSimilar("1234567890");
-        isSimilar("1234567890");
+        isSimilar("c0nt3nt");
     }
     
 }

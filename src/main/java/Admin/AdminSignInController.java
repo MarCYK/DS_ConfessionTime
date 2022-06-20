@@ -39,12 +39,12 @@ public class AdminSignInController implements Initializable {
     
     @FXML
     private void open_registration (MouseEvent event) throws IOException{
-	Parent root = FXMLLoader.load(getClass().getResource("/fxml/RegistrationUi.fxml"));
-
+        
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/RegistrationUi.fxml"));
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
         scene.getStylesheets().add("/styles/RegistrationUi.css");
-	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
         stage.show();
