@@ -23,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import SQLOperations.operationTest;
 import java.sql.*;
+import org.apache.commons.codec.digest.DigestUtils;
 
 
 public class RegistrationUiController implements Initializable {
@@ -50,6 +51,7 @@ public class RegistrationUiController implements Initializable {
     String conpass = confirmpass.getText();
     String rk = referralkey.getText();
     
+    String sha256hex = DigestUtils.sha256Hex(pass);
     operationTest sql = new operationTest();
     Connection conn = sql.getConnection();
     @Override
@@ -84,7 +86,7 @@ public class RegistrationUiController implements Initializable {
 		if(pass.equals(conpass)){
 		    PreparedStatement prp = conn.prepareStatement("insert into admin (userID,password,email) values (?,?,?)");
 		    prp.setString(1, userID);
-		    prp.setString(2, pass);
+		    prp.setString(2, sha256hex);
 		    prp.setString(3, mail);
 
                     try {

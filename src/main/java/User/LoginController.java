@@ -23,6 +23,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * FXML Controller class
@@ -53,8 +54,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginButton(ActionEvent event) {
+        String sha256hex = DigestUtils.sha256Hex(pass.getText());
 	try{
-	    ResultSet rs = sql.sqlSelect("select * from admin where userID = '"+id.getText()+"' and password = '"+pass.getText()+"'", conn);
+	    ResultSet rs = sql.sqlSelect("select * from admin where userID = '"+id.getText()+"' and password = '"+sha256hex+"'", conn);
 	    if(rs.next()){
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/waitinglist.fxml"));
 
