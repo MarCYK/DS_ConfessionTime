@@ -22,11 +22,11 @@ public class RunConfession extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Submission.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/demo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage.fxml"));
 
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
-        scene.getStylesheets().add("/styles/demo.css");
+        scene.getStylesheets().add("/styles/welcomepage.css");
 	stage.setResizable(false);
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
