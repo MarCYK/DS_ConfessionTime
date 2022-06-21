@@ -61,7 +61,6 @@ public class SearchPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 	choicebox.getItems().addAll(FXCollections.observableArrayList(value));
-        choicebox.getSelectionModel().select("All");
 	choicebox.show();
 	table_Search.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	column_ID.setReorderable(false);
@@ -89,7 +88,7 @@ public class SearchPageController implements Initializable {
             table_Search.setItems(null);
             table_Search.setItems(ob);
            
-//            choicebox.setOnAction((event) -> {
+            choicebox.setOnAction((event) -> {
                 String choice = choicebox.getSelectionModel().getSelectedItem();
                 //Search keyword
                 if(choice.equals("Search by ID")) {
@@ -229,7 +228,7 @@ public class SearchPageController implements Initializable {
 
                     table_Search.setItems(sl);
                 }
-//            });
+            });
             
         }
         
