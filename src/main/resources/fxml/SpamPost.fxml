@@ -10,15 +10,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.SpamPostsController">
+<AnchorPane id="AnchorPane" fx:id="AnchorPane" prefHeight="540.0" prefWidth="840.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.SpamPostsController">
     <stylesheets>
         <URL value="@/styles/waitinglist.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#405763" height="540.0" layoutX="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="730.0" />
-      <Label layoutX="586.0" layoutY="36.0" text="Spam Posts" textFill="WHITE">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#405763" height="540.0" layoutX="112.0" stroke="TRANSPARENT" strokeType="INSIDE" width="730.0" />
+      <Label layoutX="518.0" layoutY="36.0" text="Spam Posts" textFill="WHITE">
          <font>
-            <Font name="DINEngschriftStd" size="59.0" />
+            <Font name="Berlin Sans FB" size="59.0" />
          </font>
       </Label>
       <TextField fx:id="reply" editable="false" layoutX="257.0" layoutY="130.0" onAction="#replyID" />

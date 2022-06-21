@@ -59,7 +59,7 @@ public class LoginController implements Initializable {
     private void loginButton(ActionEvent event) {
         String sha256hex = DigestUtils.sha256Hex(pass.getText());
 	try{
-	    ResultSet rs = sql.sqlSelect("select * from admin where userID = '"+id.getText()+"' and password = '"+pass+"'", conn);
+	    ResultSet rs = sql.sqlSelect("select * from admin where userID = '"+id.getText()+"' and password = '"+sha256hex+"'", conn);
 	    if(rs.next()){
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/waitinglist.fxml"));
 

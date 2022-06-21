@@ -46,7 +46,7 @@ public class waitingListPop {
 		else{
 		    JOptionPane.showMessageDialog(null, "update error");
 		}
-		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\n"+time.timeNow());
+		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\nPopped at "+time.timeNow());
 		mysql.sqlDelete("delete from waitinglist limit 1", conn);							    //Delete first row from waiting list
 		System.out.println("test");
 	    }
