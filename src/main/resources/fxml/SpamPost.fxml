@@ -15,7 +15,7 @@
         <URL value="@/styles/waitinglist.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#616540" height="540.0" stroke="TRANSPARENT" strokeType="INSIDE" width="840.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#405763" height="540.0" layoutX="110.0" stroke="TRANSPARENT" strokeType="INSIDE" width="730.0" />
       <Label layoutX="586.0" layoutY="36.0" text="Spam Posts" textFill="WHITE">
          <font>
             <Font name="DINEngschriftStd" size="59.0" />
@@ -24,24 +24,24 @@
       <TextField fx:id="reply" editable="false" layoutX="257.0" layoutY="130.0" onAction="#replyID" />
       <Label layoutX="182.0" layoutY="134.0" text="Replying To" textFill="WHITE" />
       <TextArea fx:id="contentBox" editable="false" layoutX="182.0" layoutY="178.0" onDragDetected="#content" prefHeight="200.0" prefWidth="619.0" />
-      <Button fx:id="gotoWaiting" layoutX="656.0" layoutY="130.0" mnemonicParsing="false" onAction="#loadWaiting" text="Go To Waiting List &gt;&gt;">
+      <Button fx:id="gotoWaiting" blendMode="OVERLAY" layoutX="656.0" layoutY="130.0" mnemonicParsing="false" onAction="#loadWaiting" text="Go To Waiting List &gt;&gt;">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button fx:id="next" layoutX="323.0" layoutY="465.0" mnemonicParsing="false" onAction="#nextButton" text="NEXT">
+      <Button fx:id="next" blendMode="OVERLAY" layoutX="323.0" layoutY="465.0" mnemonicParsing="false" onAction="#nextButton" text="NEXT">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button fx:id="prev" layoutX="180.0" layoutY="465.0" mnemonicParsing="false" onAction="#prevButton" text="PREV">
+      <Button fx:id="prev" blendMode="OVERLAY" layoutX="180.0" layoutY="465.0" mnemonicParsing="false" onAction="#prevButton" text="PREV">
          <effect>
             <SepiaTone />
          </effect></Button>
       <TextField fx:id="page" alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
-      <Button fx:id="verify" layoutX="720.0" layoutY="416.0" mnemonicParsing="false" onAction="#verifyButton" prefHeight="25.0" prefWidth="73.0" text="VERIFY">
+      <Button fx:id="verify" blendMode="OVERLAY" layoutX="720.0" layoutY="416.0" mnemonicParsing="false" onAction="#verifyButton" prefHeight="25.0" prefWidth="73.0" text="VERIFY">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button fx:id="delete" layoutX="720.0" layoutY="453.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="25.0" prefWidth="73.0" text="DELETE">
+      <Button fx:id="delete" blendMode="OVERLAY" layoutX="720.0" layoutY="453.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="25.0" prefWidth="73.0" text="DELETE">
          <effect>
             <SepiaTone />
          </effect>

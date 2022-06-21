@@ -24,7 +24,9 @@ import javafx.scene.input.MouseEvent;
 import javax.swing.JOptionPane;
 import SQLOperations.operationTest;
 import java.sql.*;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 
 public class RegistrationUiController implements Initializable {
@@ -73,7 +75,7 @@ public class RegistrationUiController implements Initializable {
     @FXML
     private void backButton(ActionEvent event) throws IOException {
 	Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage.fxml"));
-
+	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
         scene.getStylesheets().add("/styles/welcomepage.css");
