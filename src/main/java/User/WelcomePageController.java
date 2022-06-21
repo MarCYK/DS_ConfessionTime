@@ -56,20 +56,20 @@ public class WelcomePageController implements Initializable {
 
     @FXML
     private void adminSign(ActionEvent event) throws IOException {
-	Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         Scene scene = admin.getScene();
         root.translateXProperty().set(scene.getWidth());
-	anchorPane.translateXProperty().set(scene.getWidth());
+        anchorPane.translateXProperty().set(scene.getWidth());
 
         Stack.getChildren().add(root);
 
         Timeline timeline = new Timeline();
         KeyValue kv = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
-	KeyValue kv1 = new KeyValue(anchorPane.translateXProperty(), 0, Interpolator.DISCRETE);
+        KeyValue kv1 = new KeyValue(anchorPane.translateXProperty(), 0, Interpolator.DISCRETE);
         KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
-	KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
+        KeyFrame kf1 = new KeyFrame(Duration.seconds(1), kv1);
         timeline.getKeyFrames().add(kf);
-	timeline.getKeyFrames().add(kf1);
+        timeline.getKeyFrames().add(kf1);
         timeline.setOnFinished(t -> {
             Stack.getChildren().remove(anchorPane);
         });
@@ -81,6 +81,7 @@ public class WelcomePageController implements Initializable {
                                         Parent root = FXMLLoader.load(getClass().getResource("/fxml/UserInterface.fxml"));
         		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                                         Scene scene = new Scene (root);
+                                    //     Scene scene = guestLog.getScene();
                                         stage.setScene(scene);
                                         stage.show();
     }
