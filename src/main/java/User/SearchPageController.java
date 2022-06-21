@@ -36,7 +36,7 @@ import javafx.stage.Stage;
  */
 public class SearchPageController implements Initializable {
     
-    String[] value = {"Search by ID","Search by Content","Search by Date/Time"};
+    String[] value = {"All", "Search by ID","Search by Content","Search by Date Only","Search by Date/Time"};
 
     @FXML
     private TextField textField_promptInput;
