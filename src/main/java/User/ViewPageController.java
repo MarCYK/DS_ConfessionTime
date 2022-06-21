@@ -56,7 +56,7 @@ public class ViewPageController implements Initializable {
         
         
         int label_count = sql.count("node", conn);
-        TextArea [] textarea_Content = new TextArea[label_count];
+        TextArea[] textarea_Content = new TextArea[label_count];
         for(int i = 0; i < label_count; i++){
             Pane_Scrolling.setContent(textarea_Content[i]);
         }
