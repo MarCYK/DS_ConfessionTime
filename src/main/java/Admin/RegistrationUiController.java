@@ -93,23 +93,23 @@ public class RegistrationUiController implements Initializable {
         try{
             if(rk.equals("asdf")){
 		if(pass.equals(conpass)){
-//		    if(sql.isValidEmail(mail)){
+		    if(sql.isValidEmail(mail)){
 
 			try {
-			    PreparedStatement prp = conn.prepareStatement("insert into admin (userID,password,email) values (?,?,?)");
+			    PreparedStatement prp = conn.prepareStatement("insert into admin (userID, password, email) values (?, ?, ?)");
 			    prp.setString(1, userID);
 			    prp.setString(2, pass);
 			    prp.setString(3, mail);
 			    prp.executeUpdate();
 			    
 			    JOptionPane.showMessageDialog(null, "Registration Completed !");
-			} catch (SQLException ex) {
+			} catch (Exception e) {
 //			    Logger.getLogger(RegistrationUiController.class.getName()).log(Level.SEVERE, null, ex);
-			    JOptionPane.showMessageDialog(null, "Registration Error");
+			    JOptionPane.showMessageDialog(null, "Registration Error\n"+e);
 			}
-//		    }else{
-//			JOptionPane.showMessageDialog(null, "Invalid Email !");
-//		    }
+		    }else{
+			JOptionPane.showMessageDialog(null, "Invalid Email !");
+		    }
 		}else{
 		    JOptionPane.showMessageDialog(null, "Password mismatch !");
 		}
