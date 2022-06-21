@@ -61,6 +61,22 @@ public class showPost{
     public String toString() {
         return thisID + "\n[" + date + "]\n\n" + content; 
     }
+    
+    public StringProperty thisIDProperty() {
+        return thisID;
+    }
+    
+    public StringProperty contentProperty() {
+        return content;
+    }
+    
+    public StringProperty dateProperty() {
+        return date;
+    }
+    
+    public StringProperty dateOnlyProperty() {
+        return dateOnly;
+    }
 }
 
 
