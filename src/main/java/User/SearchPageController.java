@@ -7,6 +7,7 @@ package User;
 
 
 import Confession.Post;
+import Confession.showPost;
 import Engine.Search;
 import SQLOperations.operationTest;
 import SQLOperations.timeClass;
@@ -44,7 +45,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
@@ -59,50 +59,52 @@ public class SearchPageController implements Initializable {
     private TextField textField_promptInput;
     
     @FXML
-    private TableView <Post> table_Search;
+    private TableView table_Search;
     
     @FXML
-    private TableColumn <Post, String> column_ID;
+    private TableColumn column_ID;
     
     @FXML
-    private TableColumn <Post, String> column_Content;
+    private TableColumn column_Content;
     
     @FXML
-    private TableColumn <Post, Timestamp> column_Time;
+    private TableColumn column_Time;
     
-    ObservableList<Post> ob = FXCollections.observableArrayList();
+    operationTest sql = new operationTest();
+    Connection conn = sql.getConnection();
+    ObservableList<showPost> ob = FXCollections.observableArrayList();
 
     //Search sr = new Search();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        operationTest sql = new operationTest();
-        Connection conn = sql.getConnection();
-        
-        String query = "SELECT * FROM node";
-        
+        System.out.println("ini");
+        Runn();
+    }
+    
+    @FXML
+    private void Runn() {
         try{
-            PreparedStatement prp = conn.prepareStatement(query);
-            ResultSet rs = prp.executeQuery();
+            Connection conn = sql.getConnection();
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM node");
             
             while(rs.next()){
-                
-                String queryID = rs.getString("thisID");
-                String queryContent = rs.getString("content");
-                Timestamp queryTime = rs.getTimestamp("date");
-                ob.add(new Post(queryID, queryContent, queryTime));
-		System.out.println(queryID + " " + queryContent + " " + queryTime + " added");
+                String id = rs.getString("thisID");
+                String cont = rs.getString("content");
+                String dat = rs.getString("date");
+                ob.add(new showPost(rs.getString("thisID"), rs.getString("content"), rs.getString("date")));
+                System.out.println(id + " " + cont + " " + dat + " added");
             }
             
-            column_ID.setCellValueFactory(new PropertyValueFactory<>("thisid"));
-            column_Content.setCellValueFactory(new PropertyValueFactory<>("Content"));
-            column_Time.setCellValueFactory(new PropertyValueFactory<>("Date"));
-            
+            column_ID.setCellValueFactory(new PropertyValueFactory<>("thisID"));
+            column_Content.setCellValueFactory(new PropertyValueFactory<>("content"));
+            column_Time.setCellValueFactory(new PropertyValueFactory<>("date"));
+            table_Search.setItems(null);
             table_Search.setItems(ob);
             
-            FilteredList<Post> filtered = new FilteredList<>(ob, b -> true);
+            FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
             textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
-                filtered.setPredicate(Post -> {
+                filtered.setPredicate(showPost -> {
                     
                     if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
                         return true;
@@ -110,19 +112,19 @@ public class SearchPageController implements Initializable {
                     
                     String search = newValue.toLowerCase();
                     
-                    if(Post.getThisID().toLowerCase().indexOf(search) > -1){
+                    if(showPost.thisIDProperty().toString().toLowerCase().contains(search)){
                         return true;
                     }
                     
-                    else if(Post.getContent().toLowerCase().indexOf(search) > -1){
+                    else if(showPost.contentProperty().toString().toLowerCase().contains(search)){
                         return true;
                     }
                     
-                    else if(Post.getDate().toString().indexOf(search) > -1){
+                    else if(showPost.dateProperty().toString().contains(search)){
                         return true;
                     }
                     
-                    else if(Post.getDateOnly().toString().indexOf(search) > -1){
+                    else if(showPost.dateOnlyProperty().toString().indexOf(search) > -1){
                         return true;
                     }
                     
@@ -131,7 +133,7 @@ public class SearchPageController implements Initializable {
                 });
             });
             
-            SortedList<Post> sl = new SortedList<>(filtered);
+            SortedList<showPost> sl = new SortedList<>(filtered);
             sl.comparatorProperty().bind(table_Search.comparatorProperty());
             
             table_Search.setItems(sl);
@@ -140,8 +142,6 @@ public class SearchPageController implements Initializable {
         catch(SQLException e){
             Logger.getLogger(SearchPageController.class.getName()).log(Level.SEVERE,null,e);
             e.printStackTrace();
-	    
-	    JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
     

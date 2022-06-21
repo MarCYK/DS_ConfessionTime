@@ -67,6 +67,7 @@ public class WaitingListController implements Initializable {
     Connection conn = sql.getConnection();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        System.out.println("Test");
 	setPost();
 	total = sql.count("waitinglist", conn);
 	page.setText(counter+"/"+total);
