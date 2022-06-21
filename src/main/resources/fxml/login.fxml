@@ -14,7 +14,7 @@
         <URL value="@/styles/welcomepage.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#276165" height="400.0" layoutX="315.0" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#276165" height="400.0" layoutX="322.0" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
       <Label layoutX="427.0" layoutY="55.0" prefHeight="69.0" prefWidth="125.0" text="Log In" textFill="WHITE">
          <font>
             <Font name="Calibri" size="47.0" />
