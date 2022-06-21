@@ -7,6 +7,7 @@ package User;
 
 
 import Confession.Post;
+import Confession.showPost;
 import Engine.Search;
 import SQLOperations.operationTest;
 import SQLOperations.timeClass;
@@ -58,18 +59,18 @@ public class SearchPageController implements Initializable {
     private TextField textField_promptInput;
     
     @FXML
-    private TableView <Post> table_Search;
+    private TableView <showPost> table_Search;
     
     @FXML
-    private TableColumn <Post, String> column_ID;
+    private TableColumn <showPost, String> column_ID;
     
     @FXML
-    private TableColumn <Post, String> column_Content;
+    private TableColumn <showPost, String> column_Content;
     
     @FXML
-    private TableColumn <Post, Timestamp> column_Time;
+    private TableColumn <showPost, Timestamp> column_Time;
     
-    ObservableList<Post> ob = FXCollections.observableArrayList();
+    ObservableList<showPost> ob = FXCollections.observableArrayList();
 
     //Search sr = new Search();
     
@@ -88,8 +89,8 @@ public class SearchPageController implements Initializable {
                 
                 String queryID = rs.getString("thisID");
                 String queryContent = rs.getString("content");
-                Timestamp queryTime = rs.getTimestamp("date");
-                ob.add(new Post(queryID, queryContent, queryTime));
+                String queryTime = rs.getString("date");
+                ob.add(new showPost(queryID, queryContent, queryTime));
             }
             
             column_ID.setCellValueFactory(new PropertyValueFactory<>("thisid"));
@@ -98,7 +99,7 @@ public class SearchPageController implements Initializable {
             
             table_Search.setItems(ob);
             
-            FilteredList<Post> filtered = new FilteredList<>(ob, b -> true);
+            FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
             textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
                 filtered.setPredicate(Post -> {
                     
@@ -129,7 +130,7 @@ public class SearchPageController implements Initializable {
                 });
             });
             
-            SortedList<Post> sl = new SortedList<>(filtered);
+            SortedList<showPost> sl = new SortedList<>(filtered);
             sl.comparatorProperty().bind(table_Search.comparatorProperty());
             
             table_Search.setItems(sl);
