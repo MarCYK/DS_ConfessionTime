@@ -4,6 +4,7 @@
  */
 package User;
 
+import static Admin.Launch.stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,11 +24,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  * FXML Controller class
  *
- * @author Irfan 
+ * @author Irfan
  */
 public class LoginController implements Initializable {
 
@@ -37,13 +39,12 @@ public class LoginController implements Initializable {
     @FXML
     private Button login;
     
-    @FXML
-    private Button backBtn;
-    
      operationTest sql = new operationTest();
      Connection conn = sql.getConnection();
     @FXML
     private PasswordField pass;
+    @FXML
+    private Button cmd_back;
 
 
     /**
@@ -56,8 +57,9 @@ public class LoginController implements Initializable {
 
     @FXML
     private void loginButton(ActionEvent event) {
+        String sha256hex = DigestUtils.sha256Hex(pass.getText());
 	try{
-	    ResultSet rs = sql.sqlSelect("select * from admin where userID = '"+id.getText()+"' and password = '"+pass.getText()+"'", conn);
+	    ResultSet rs = sql.sqlSelect("select * from admin where userID = '"+id.getText()+"' and password = '"+pass+"'", conn);
 	    if(rs.next()){
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/waitinglist.fxml"));
 
@@ -80,23 +82,23 @@ public class LoginController implements Initializable {
     @FXML
     private void signupButton(MouseEvent event) throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/RegistrationUi.fxml"));
-
 		Scene scene = new Scene(root);
-	         //        scene.getStylesheets().add("/styles/submission.css");
-		scene.getStylesheets().add("/styles/registrationui.css");
+	//        scene.getStylesheets().add("/styles/submission.css");
+		scene.getStylesheets().add("/styles/waitinglist.css");
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-
 		stage.setTitle("JavaFX and Maven");
 		stage.setScene(scene);
 		stage.show();
     }
-    
-    private void backButton (ActionEvent event) throws IOException{
-                                        Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage_1.fxml"));
-        		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                                        Scene scene = new Scene (root);
-                                        stage.setTitle("JavaFX and Maven");
-                                        stage.setScene(scene);
-                                        stage.show();
+
+    @FXML
+    private void backPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage_1.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene (root);
+        stage.setTitle("JavaFX and Maven");
+        stage.setScene(scene);
+        stage.show();
     }
+    
 }
