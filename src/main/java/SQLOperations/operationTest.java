@@ -6,16 +6,16 @@ package SQLOperations;
 import java.sql.*;
 //import javafx.scene.control.Alert;
 import javax.swing.JOptionPane;
-import org.apache.commons.validator.routines.EmailValidator;
+import org.apache.commons.validator.EmailValidator;
 /**
  *
  * @author Irfan
  */
 public class operationTest {
     public Connection getConnection(){
-	final String user = "root";
-        final String pass = "rotikeju";
-//        final String pass = "Pirvin@2510";
+        final String user = "root";
+//     final String pass = "rotikeju";
+        final String pass = "Pirvin@2510";
         final String path = "jdbc:mysql://localhost:3306/confession";
 
         final String driver = "com.mysql.cj.jdbc.Driver";
@@ -68,9 +68,7 @@ public class operationTest {
 	    prp.setString(2, replyid);
 	    prp.setString(3, content);
 	    prp.setString(4, date);
-	    
 	    prp.execute();
-	    
 	}catch(SQLException e){
 	    JOptionPane.showMessageDialog(null, e.getMessage());
 	}
@@ -86,13 +84,10 @@ public class operationTest {
 	    JOptionPane.showMessageDialog(null, e.getMessage());
 	    return -1;
 	}
-	
-	
     }
     
     public boolean isValidEmail(String email) {
 	EmailValidator validator = EmailValidator.getInstance();
 	return validator.isValid(email);
     }
-    
 }
