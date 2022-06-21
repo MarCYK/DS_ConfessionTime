@@ -1,5 +1,6 @@
 package User;
 
+import SQLOperations.operationTest;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +8,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import SQLOperations.waitingListPop;
+import java.sql.*;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.JOptionPane;
+
 
 
 public class RunConfession extends Application {
-
+    operationTest sql = new operationTest();
+    Connection conn = sql.getConnection();
+    waitingListPop pop = new waitingListPop();
     @Override
     public void start(Stage stage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Submission.fxml"));
@@ -26,15 +32,34 @@ public class RunConfession extends Application {
         stage.setScene(scene);
         stage.show();
 	
-	waitingListPop pop = new waitingListPop();
 	Timer time = new Timer();
-	TimerTask task = new TimerTask(){
-	    public void run(){
-		pop.start();
+	MyTimerTask task = new MyTimerTask();
+	TimerTask pause = new NoTask();
+	
+	
+	
+	
+	try{
+
+	    if (sql.count("waitinglist", conn) > 10) {
+		time.schedule(new MyTimerTask(), 1000 * 60 * 5, 1000 * 60 * 5);
+	    } else if (sql.count("waitinglist", conn) > 5) {
+		time.schedule(new MyTimerTask(), 1000 * 60 * 10, 1000 * 60 * 10);
+	    } else if (sql.count("waitinglist", conn) > 0) {
+		time.schedule(new MyTimerTask(), 1000 * 60 * 15, 1000 * 60 * 15);
+	    } else {
+		time.schedule(new NoTask(), 1000 * 60 * 1, 1000 * 60 * 1);
 	    }
-	};
-	time.scheduleAtFixedRate(task, 1000 * 60 * 2 , 1000 * 60 * 1);
+	
+	
+	
+	
+	}catch(Exception e){
+	    JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());
+	}
     }
+    
+    
 
     /**
      * The main() method is ignored in correctly deployed JavaFX application.
@@ -50,4 +75,21 @@ public class RunConfession extends Application {
 	
     }
 
+    private static class NoTask extends TimerTask {
+
+	public void run() {
+	}
+    }
+
 }
+class MyTimerTask extends TimerTask {
+    operationTest sql = new operationTest();
+    Connection conn = sql.getConnection();
+    waitingListPop pop = new waitingListPop();
+    public void run() {
+        pop.start();
+    }
+    
+}
+
+

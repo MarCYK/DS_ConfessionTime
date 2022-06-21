@@ -6,12 +6,12 @@ package Engine;
  */
 
 import SQLOperations.operationTest;
-import info.debatty.java.stringsimilarity.RatcliffObershelp;
+import info.debatty.java.stringsimilarity.*;
 import java.util.ArrayList;
 import java.sql.*;
 
 public class RepostDetection {
-    RatcliffObershelp ro = new RatcliffObershelp();
+    NormalizedLevenshtein ro = new NormalizedLevenshtein();
     static ArrayList<String> content = new ArrayList<>();
     
     // initialize all contents available
@@ -45,7 +45,7 @@ public class RepostDetection {
     
     public static void main(String[] args) {
         RepostDetection rp = new RepostDetection();
-        String str = "c0nt3nt";
+        String str = "content ";
         System.out.println(rp.checkRepost(str));
     }
 }

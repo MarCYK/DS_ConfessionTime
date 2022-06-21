@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.SepiaTone?>
@@ -25,8 +24,6 @@
       <TextField fx:id="reply" editable="false" layoutX="257.0" layoutY="130.0" onAction="#replyID" />
       <Label layoutX="182.0" layoutY="134.0" text="Replying To" textFill="WHITE" />
       <TextArea fx:id="contentBox" editable="false" layoutX="182.0" layoutY="178.0" onDragDetected="#content" prefHeight="200.0" prefWidth="619.0" />
-      <RadioButton layoutX="717.0" layoutY="421.0" mnemonicParsing="false" text="Verify" textFill="WHITE" />
-      <RadioButton layoutX="717.0" layoutY="448.0" mnemonicParsing="false" text="Delete" textFill="WHITE" />
       <Button fx:id="gotoWaiting" layoutX="656.0" layoutY="130.0" mnemonicParsing="false" onAction="#loadWaiting" text="Go To Waiting List &gt;&gt;">
          <effect>
             <SepiaTone />
@@ -40,9 +37,14 @@
             <SepiaTone />
          </effect></Button>
       <TextField fx:id="page" alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
-      <Button fx:id="Confirm" layoutX="717.0" layoutY="490.0" mnemonicParsing="false" onAction="#confirmButton" text="CONFIRM">
+      <Button fx:id="verify" layoutX="720.0" layoutY="416.0" mnemonicParsing="false" onAction="#verifyButton" prefHeight="25.0" prefWidth="73.0" text="VERIFY">
          <effect>
             <SepiaTone />
          </effect></Button>
+      <Button fx:id="delete" layoutX="720.0" layoutY="453.0" mnemonicParsing="false" onAction="#deleteButton" prefHeight="25.0" prefWidth="73.0" text="DELETE">
+         <effect>
+            <SepiaTone />
+         </effect>
+      </Button>
    </children>
 </AnchorPane>
