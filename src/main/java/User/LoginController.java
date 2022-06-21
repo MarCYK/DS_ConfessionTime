@@ -27,7 +27,7 @@ import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
- * @author Irfan
+ * @author Irfan 
  */
 public class LoginController implements Initializable {
 
@@ -36,6 +36,9 @@ public class LoginController implements Initializable {
     
     @FXML
     private Button login;
+    
+    @FXML
+    private Button backBtn;
     
      operationTest sql = new operationTest();
      Connection conn = sql.getConnection();
@@ -79,7 +82,7 @@ public class LoginController implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getResource("/fxml/RegistrationUi.fxml"));
 
 		Scene scene = new Scene(root);
-	//        scene.getStylesheets().add("/styles/submission.css");
+	         //        scene.getStylesheets().add("/styles/submission.css");
 		scene.getStylesheets().add("/styles/registrationui.css");
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
@@ -88,4 +91,12 @@ public class LoginController implements Initializable {
 		stage.show();
     }
     
+    private void backButton (ActionEvent event) throws IOException{
+                                        Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage_1.fxml"));
+        		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                                        Scene scene = new Scene (root);
+                                        stage.setTitle("JavaFX and Maven");
+                                        stage.setScene(scene);
+                                        stage.show();
+    }
 }
