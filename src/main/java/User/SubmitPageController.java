@@ -4,6 +4,7 @@
  */
 package User;
 
+import Confession.Tag;
 import Engine.RepostDetection;
 import Engine.SpamDetection;
 import java.net.URL;
@@ -16,6 +17,12 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import java.sql.*;
 import SQLOperations.*;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 
@@ -36,6 +43,8 @@ public class SubmitPageController implements Initializable {
     operationTest sql = new operationTest();
     timeClass time = new timeClass();
     Connection conn = sql.getConnection();
+    @FXML
+    private Button cmd_Back;
 
     /**
      * Initializes the controller class.
@@ -47,7 +56,8 @@ public class SubmitPageController implements Initializable {
 
     @FXML
     private void submitBtn(ActionEvent event) {
-	String thisid = "";
+	Tag tag = new Tag();
+	String thisid = tag.makeTag();
 	String replyid = replyID.getText();
 	String content = this.content.getText();
 	String date = time.timeNow();
@@ -55,8 +65,7 @@ public class SubmitPageController implements Initializable {
 	SpamDetection spm = new SpamDetection();
 	RepostDetection rp = new RepostDetection();
         try{
-	    
-            sql.sqlAddTo(thisid, replyid, content, date, "waitinglist", conn);
+	               
 	    
 	    if(spm.classifySpam(content)||rp.checkRepost(content)){
 		    try {
@@ -88,11 +97,25 @@ public class SubmitPageController implements Initializable {
 		}
 		}
 	    
-            JOptionPane.showMessageDialog(null, ">>Submitted at "+time.timeNow()+"\n>>Your Confession ID is U200\n>>Your Submission Will be Published Soon");
+            JOptionPane.showMessageDialog(null, ">>Submitted at "+time.timeNow()+"\n>>Your Confession ID is "+thisid+"\n>>Your Submission Will be Published Soon");
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     
     
+    }
+
+    @FXML
+    private void BackPressed(ActionEvent event) throws IOException {
+	Parent root = FXMLLoader.load(getClass().getResource("/fxml/UserInterface.fxml"));
+
+		Scene scene = new Scene(root);
+	//        scene.getStylesheets().add("/styles/submission.css");
+		scene.getStylesheets().add("/styles/userinterface.css");
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+		stage.setTitle("JavaFX and Maven");
+		stage.setScene(scene);
+		stage.show();
     }
 }

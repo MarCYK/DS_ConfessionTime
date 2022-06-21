@@ -15,8 +15,11 @@ public class Tag {
         operationTest mysql = new operationTest();
         try{
             Connection conn = mysql.getConnection();
-            ResultSet rs = mysql.sqlSelect("select * from node order by id desc limit 1", conn);rs.next();
-            tag = Integer.parseInt(rs.getString("id")) + 1;
+            ResultSet rs = mysql.sqlSelect("select * from tag order by idtag desc limit 1", conn);rs.next();
+            tag = Integer.parseInt(rs.getString("idtag")) + 1;
+	    
+	    PreparedStatement prp = conn.prepareStatement("insert into tag (note) values ('a')");
+	    prp.execute();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "u got error btw lmao (tag error)\n\n"+e.getMessage());
         }
@@ -40,6 +43,4 @@ public class Tag {
     public static void setTag(int tag) {
         Tag.tag = tag;
     }
-    
-    //make getLastTag()
 }

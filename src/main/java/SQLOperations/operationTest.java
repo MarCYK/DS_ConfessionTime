@@ -14,7 +14,7 @@ import org.apache.commons.validator.EmailValidator;
 public class operationTest {
     public Connection getConnection(){
         final String user = "root";
-	final String pass = "SaA_SDK0201";
+	final String pass = "rotikeju";
 //        final String pass = "Pirvin@2510";
         final String path = "jdbc:mysql://localhost:3306/confession";
 
