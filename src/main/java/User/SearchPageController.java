@@ -13,11 +13,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,6 +35,8 @@ import javafx.stage.Stage;
  * @author Marvin Chin Yi Kai
  */
 public class SearchPageController implements Initializable {
+    
+    String[] value = {"Search by ID","Search by Content","Search by Date/Time"};
 
     @FXML
     private TextField textField_promptInput;
@@ -45,12 +50,17 @@ public class SearchPageController implements Initializable {
     private TableColumn<showPost, String> column_Time;
     @FXML
     private ImageView image_Return;
+    @FXML
+    private ChoiceBox<String> choicebox;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+	choicebox.getItems().addAll(value);
+	choicebox.show();
 	table_Search.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	column_ID.setReorderable(false);
 	column_Content.setReorderable(false);
@@ -131,6 +141,10 @@ public class SearchPageController implements Initializable {
         }
             catch(Exception e){}
         return true;
+    }
+
+    @FXML
+    private void choiceBox(MouseEvent event) {
     }
     
 }

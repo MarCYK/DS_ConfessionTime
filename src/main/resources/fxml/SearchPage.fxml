@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -13,7 +14,7 @@
         <URL value="@/styles/userpage.css" />
     </stylesheets>
    <children>
-      <TextField fx:id="textField_promptInput" layoutX="26.0" layoutY="52.0" prefHeight="26.0" prefWidth="534.0" promptText="Search...." />
+      <TextField fx:id="textField_promptInput" layoutX="26.0" layoutY="52.0" prefHeight="26.0" prefWidth="377.0" promptText="Search...." />
       <ImageView fx:id="image_Return" fitHeight="26.0" fitWidth="27.0" layoutX="13.0" layoutY="14.0" onMouseClicked="#BackToUserInterface" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../java/User/images/Return.png" />
@@ -25,5 +26,6 @@
             <TableColumn fx:id="column_Time" prefWidth="114.0" text="Time" />
         </columns>
       </TableView>
+      <ChoiceBox fx:id="choicebox" layoutX="410.0" layoutY="53.0" onDragDetected="#choiceBox" prefWidth="150.0" />
    </children>
 </AnchorPane>
