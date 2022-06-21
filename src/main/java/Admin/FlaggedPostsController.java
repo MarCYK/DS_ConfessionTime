@@ -5,7 +5,7 @@ package Admin;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 
-import SQLOperations.operationTest;
+import SQLOperations.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -40,9 +40,8 @@ public class FlaggedPostsController implements Initializable {
     private int total = 1;
     operationTest sql = new operationTest();
     Connection conn = sql.getConnection();
+    String currentID = "";
 
-    @FXML
-    private Button Confirm;
     @FXML
     private Button loadSpam;
     @FXML
@@ -57,6 +56,10 @@ public class FlaggedPostsController implements Initializable {
     private Button prev;
     @FXML
     private TextField page;
+    @FXML
+    private Button unflag;
+    @FXML
+    private Button remove;
 
     /**
      * Initializes the controller class.
@@ -64,13 +67,10 @@ public class FlaggedPostsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 	setPost();
-	total = sql.count("spam", conn);
+	total = sql.count("flag", conn);
 	page.setText(counter+"/"+total);
     }    
 
-    @FXML
-    private void confirmButton(ActionEvent event) {
-    }
 
     @FXML
     private void gotoSpam(ActionEvent event) throws IOException {
@@ -96,10 +96,11 @@ public class FlaggedPostsController implements Initializable {
     private void replyID(ActionEvent event) {
 	int offset = counter-1;
 	try{
-	    if(sql.count("spam", conn)==0){
+	    if(sql.count("flag", conn)==0){
 		reply.setText("It Is Empty Here :(");
 	    }else{
-		ResultSet rs = sql.sqlSelect("select * from spam limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+		ResultSet rs = sql.sqlSelect("select * from flag limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+		currentID = rs.getString("thisID");
 		reply.setText("#"+rs.getString("replyID"));
 		if(reply.getText().equals("#null"))
 		    reply.setText("none");
@@ -114,8 +115,8 @@ public class FlaggedPostsController implements Initializable {
     private void content(MouseEvent event) {
 	int offset = counter-1;
 	try{
-	    if(sql.count("spam", conn)!=0){
-		ResultSet rs = sql.sqlSelect("select * from spam limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+	    if(sql.count("flag", conn)!=0){
+		ResultSet rs = sql.sqlSelect("select * from flag limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
 		contentBox.setText("#"+rs.getString("thisID")+"\n\n"+rs.getString("content"));
 	    }
 	    
@@ -126,7 +127,7 @@ public class FlaggedPostsController implements Initializable {
 
     @FXML
     private void nextButton(ActionEvent event) {
-	total = sql.count("spam", conn);
+	total = sql.count("flag", conn);
 	if(counter>=total){
 	    JOptionPane.showMessageDialog(null, "This is the last page");
 	    counter = total;
@@ -141,7 +142,7 @@ public class FlaggedPostsController implements Initializable {
 
     @FXML
     private void prevButton(ActionEvent event) {
-	total = sql.count("spam", conn);
+	total = sql.count("flag", conn);
 	if(counter<=1){
 	    JOptionPane.showMessageDialog(null, "This is the First Page");
 	    counter = 1;
@@ -156,6 +157,20 @@ public class FlaggedPostsController implements Initializable {
     private void setPost(){
 	content(null);
 	replyID(null);
+    }
+
+    @FXML
+    private void unflagButton(ActionEvent event) {
+	sql.sqlDelete("delete from flag where thisID = '"+currentID+"'", conn);
+	JOptionPane.showMessageDialog(null, "Post Unflagged");
+    }
+
+    @FXML
+    private void removeButton(ActionEvent event) {
+	batchRemoval br = new batchRemoval();
+	br.remove(currentID,"node");
+	br.remove(currentID, "flag");
+	JOptionPane.showMessageDialog(null, "Post Deleted");
     }
 
     

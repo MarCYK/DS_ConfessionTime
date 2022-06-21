@@ -7,6 +7,8 @@
 package SQLOperations;
 
 import Confession.Tag;
+import Engine.RepostDetection;
+import Engine.SpamDetection;
 import java.awt.HeadlessException;
 import SQLOperations.operationTest;
 import java.sql.*;
@@ -19,10 +21,10 @@ import javax.swing.JOptionPane;
 public class waitingListPop {
     
     public static void main(String[] args) {
-	start();
+	
     }
     
-    public static void start() {
+    public void start() {
 	timeClass time = new timeClass();
         Tag tag = new Tag();
 	operationTest mysql = new operationTest();
@@ -31,6 +33,10 @@ public class waitingListPop {
 	    
 	    if(mysql.count("waitinglist", conn)!=0){
 		ResultSet rs = mysql.sqlSelect("select * from waitinglist limit 1", conn);rs.next();				    //Select first row from waiting list
+		
+		
+		
+		
 		if(rs.getString("status").equals("1")){
 		    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
 		}

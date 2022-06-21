@@ -3,7 +3,6 @@
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.SepiaTone?>
@@ -25,8 +24,6 @@
       <TextField fx:id="reply" editable="false" layoutX="257.0" layoutY="130.0" onAction="#replyID" />
       <Label layoutX="182.0" layoutY="134.0" text="Replying To" textFill="WHITE" />
       <TextArea fx:id="contentBox" layoutX="182.0" layoutY="178.0" onDragDetected="#content" prefHeight="200.0" prefWidth="619.0" />
-      <RadioButton layoutX="717.0" layoutY="421.0" mnemonicParsing="false" text="Unflag" textFill="WHITE" />
-      <RadioButton layoutX="717.0" layoutY="448.0" mnemonicParsing="false" text="Delete" textFill="WHITE" />
       <Button fx:id="loadSpam" layoutX="668.0" layoutY="130.0" mnemonicParsing="false" onAction="#gotoSpam" text="Go To Spam Posts &gt;&gt;">
          <effect>
             <SepiaTone />
@@ -40,7 +37,12 @@
             <SepiaTone />
          </effect></Button>
       <TextField fx:id="page" alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
-      <Button fx:id="Confirm" layoutX="717.0" layoutY="490.0" mnemonicParsing="false" onAction="#confirmButton" text="CONFIRM">
+      <Button fx:id="unflag" layoutX="735.0" layoutY="424.0" mnemonicParsing="false" onAction="#unflagButton" text="UNFLAG">
+         <effect>
+            <SepiaTone />
+         </effect>
+      </Button>
+      <Button fx:id="remove" layoutX="734.0" layoutY="465.0" mnemonicParsing="false" onAction="#removeButton" text="REMOVE">
          <effect>
             <SepiaTone />
          </effect>

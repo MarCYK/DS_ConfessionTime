@@ -4,7 +4,10 @@
  */
 package Admin;
 
+import Confession.Tag;
 import SQLOperations.operationTest;
+import SQLOperations.timeClass;
+import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -33,11 +36,12 @@ public class SpamPostsController implements Initializable {
     private int total = 1;
     operationTest sql = new operationTest();
     Connection conn = sql.getConnection();
+    timeClass time = new timeClass();
+    Tag tag = new Tag();
+    String currentID = "";
     
     @FXML
     private Button gotoWaiting;
-    @FXML
-    private Button Confirm;
     @FXML
     private AnchorPane AnchorPane;
     @FXML
@@ -50,6 +54,10 @@ public class SpamPostsController implements Initializable {
     private Button prev;
     @FXML
     private TextField page;
+    @FXML
+    private Button verify;
+    @FXML
+    private Button delete;
 
     /**
      * Initializes the controller class.
@@ -81,9 +89,6 @@ public class SpamPostsController implements Initializable {
         timeline.play();
     }
 
-    @FXML
-    private void confirmButton(ActionEvent event) {
-    }
 
     @FXML
     private void replyID(ActionEvent event) {
@@ -93,6 +98,7 @@ public class SpamPostsController implements Initializable {
 		reply.setText("It Is Empty Here :(");
 	    }else{
 		ResultSet rs = sql.sqlSelect("select * from spam limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
+		currentID = rs.getString("thisID");
 		reply.setText("#"+rs.getString("replyID"));
 		if(reply.getText().equals("#null"))
 		    reply.setText("none");
@@ -148,6 +154,36 @@ public class SpamPostsController implements Initializable {
     private void setPost(){
 	content(null);
 	replyID(null);
+    }
+
+    @FXML
+    private void verifyButton(ActionEvent event) {
+	
+	try{
+	    
+	    if(sql.count("spam", conn)!=0){
+		ResultSet rs = sql.sqlSelect("select * from spam where thisID = '"+currentID+"'", conn);rs.next();				    //Select first row from waiting list
+		sql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
+		
+		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\n"+time.timeNow());
+		sql.sqlDelete("delete from spam where thisID = '"+currentID+"'", conn);							    //Delete first row from waiting list
+		System.out.println("test");
+		JOptionPane.showMessageDialog(null, "Post Verified !");
+	    }
+	    
+	    
+	    
+	    
+	    
+	}catch(HeadlessException | SQLException e){
+	    JOptionPane.showMessageDialog(null, "u got error btw lmao\n\n"+e.getMessage());
+	}
+    }
+
+    @FXML
+    private void deleteButton(ActionEvent event) {
+	sql.sqlDelete("delete from spam where thisID = '"+currentID+"'", conn);
+	JOptionPane.showMessageDialog(null, "Post has been removed !");
     }
     
 }
