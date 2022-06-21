@@ -19,19 +19,19 @@ public class batchRemoval {
 	
     }
     
-    public void remove(String str){
+    public void remove(String str,String tablename){
 	operationTest mysql = new operationTest();
 	Connection conn = mysql.getConnection();
-	String statement = "delete from node where thisID = '"+str+"'";
-	String select = "select * from node where replyID = '"+str+"'";
-	String check = "select * from node where exists(select * from node where replyID = '"+str+"')";
+	String statement = "delete from "+tablename+" where thisID = '"+str+"'";
+	String select = "select * from "+tablename+" where replyID = '"+str+"'";
+	String check = "select * from "+tablename+" where exists(select * from "+tablename+" where replyID = '"+str+"')";
 	ResultSet rs = null;
 	
 	try{
 	    while(mysql.sqlSelect(check, conn).next()){		    //check if current node has child(s) or not (if has replies or not)
 		rs = mysql.sqlSelect(select, conn);
 		rs.next();
-		remove(rs.getString("thisID"));			    //iterate to the child node until reach childless node (post with no replies lmao)(Depth-first Search)
+		remove(rs.getString("thisID"),tablename);			    //iterate to the child node until reach childless node (post with no replies lmao)(Depth-first Search)
 	    }	
 	    mysql.sqlDelete(statement, conn);			    //delete the nodes, starting from the most bottom node
 	}catch(Exception e){
