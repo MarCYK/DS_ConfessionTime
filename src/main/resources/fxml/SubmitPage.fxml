@@ -23,5 +23,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Button fx:id="cmd_Back" layoutX="414.0" layoutY="334.0" mnemonicParsing="false" onAction="#BackPressed" prefHeight="25.0" prefWidth="54.0" text="Back" />
    </children>
 </AnchorPane>

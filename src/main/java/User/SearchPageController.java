@@ -2,6 +2,7 @@ package User;
 
 import Confession.showPost;
 import SQLOperations.operationTest;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
@@ -239,17 +241,17 @@ public class SearchPageController implements Initializable {
     }    
 
     @FXML
-    private boolean BackToUserInterface() throws ClassNotFoundException {
-        Stage mainStage = (Stage) image_Return.getScene().getWindow();
+    private void BackToUserInterface(MouseEvent event) throws ClassNotFoundException, IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/UserInterface.fxml"));
 
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
-            Scene scene = new Scene(root);
-            mainStage.setScene(scene);
-            mainStage.setTitle("Test Window");
-        }
-            catch(Exception e){}
-        return true;
+		Scene scene = new Scene(root);
+	//        scene.getStylesheets().add("/styles/submission.css");
+		scene.getStylesheets().add("/styles/userinterface.css");
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+
+		stage.setTitle("JavaFX and Maven");
+		stage.setScene(scene);
+		stage.show();
     }
 
     @FXML

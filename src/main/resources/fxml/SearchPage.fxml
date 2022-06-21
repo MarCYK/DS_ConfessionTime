@@ -17,7 +17,7 @@
       <TextField fx:id="textField_promptInput" layoutX="26.0" layoutY="52.0" prefHeight="26.0" prefWidth="377.0" promptText="Search...." />
       <ImageView fx:id="image_Return" fitHeight="26.0" fitWidth="27.0" layoutX="13.0" layoutY="14.0" onMouseClicked="#BackToUserInterface" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../java/User/images/Return.png" />
+            <Image url="@../Media/Return.png" />
          </image></ImageView>
       <TableView fx:id="table_Search" layoutX="26.0" layoutY="90.0" prefHeight="288.0" prefWidth="534.0">
         <columns>

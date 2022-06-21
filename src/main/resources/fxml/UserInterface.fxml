@@ -5,44 +5,62 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.UserInterfaceController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.UserInterfaceController">
     <stylesheets>
         <URL value="@/styles/userinterface.css" />
     </stylesheets>
    <children>
-      <Label layoutX="99.0" layoutY="35.0" prefHeight="18.0" prefWidth="515.0" text="Welcome to Confession Time!">
+      <ImageView fitHeight="400.0" fitWidth="697.0" layoutX="-83.0">
+         <image>
+            <Image url="@../Media/water.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="400.0" fitWidth="712.0" layoutX="-294.0">
+         <image>
+            <Image url="@../Media/background.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="400.0" fitWidth="683.0" layoutX="-477.0">
+         <image>
+            <Image url="@../Media/46ac9e282d3c303934a72d941845785b.gif" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3f62ae" height="55.0" layoutX="-2.0" layoutY="57.0" opacity="0.83" stroke="TRANSPARENT" strokeType="INSIDE" width="614.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#758ca1" height="195.0" layoutY="133.0" opacity="0.65" stroke="#fff0f000" strokeType="INSIDE" width="614.0" />
+      <Label layoutX="98.0" layoutY="65.0" prefHeight="18.0" prefWidth="515.0" text="Welcome to Confession Time!" textFill="WHITE">
          <font>
-            <Font name="Cambria Italic" size="33.0" />
+            <Font name="Calibri" size="33.0" />
          </font>
       </Label>
-      <ImageView fx:id="image_Submit" fitHeight="102.0" fitWidth="114.0" layoutX="99.0" layoutY="98.0" onMouseClicked="#ToSubmitPage" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image_Submit" fitHeight="102.0" fitWidth="114.0" layoutX="68.0" layoutY="170.0" onMouseClicked="#ToSubmitPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../java/User/images/Submit.png" />
+            <Image url="@../Media/Submit.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="image_View" fitHeight="102.0" fitWidth="114.0" layoutX="397.0" layoutY="112.0" onMouseClicked="#ToViewPage" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image_View" fitHeight="102.0" fitWidth="114.0" layoutX="452.0" layoutY="176.0" onMouseClicked="#ToViewPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../java/User/images/view.png" />
+            <Image url="@../Media/view.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="image_Search" fitHeight="102.0" fitWidth="114.0" layoutX="240.0" layoutY="224.0" onMouseClicked="#ToSearchPage" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image_Search" fitHeight="102.0" fitWidth="114.0" layoutX="255.0" layoutY="171.0" onMouseClicked="#ToSearchPage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../java/User/images/Search.png" />
+            <Image url="@../Media/Search.png" />
          </image>
       </ImageView>
-      <Label layoutX="109.0" layoutY="211.0" prefHeight="18.0" prefWidth="54.0" text="Submit">
+      <Label fx:id="txt_submit" layoutX="72.0" layoutY="286.0" onMouseClicked="#submitPageText" prefHeight="18.0" prefWidth="54.0" text="Submit">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="435.0" layoutY="211.0" prefHeight="18.0" prefWidth="54.0" text="View">
+      <Label fx:id="Txt_ViewPage" layoutX="488.0" layoutY="286.0" onMouseClicked="#ViewPageText" prefHeight="18.0" prefWidth="54.0" text="View">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label layoutX="272.0" layoutY="339.0" prefHeight="18.0" prefWidth="54.0" text="Search">
+      <Label fx:id="txt_Search" layoutX="287.0" layoutY="286.0" onMouseClicked="#SearchPageText" prefHeight="18.0" prefWidth="54.0" text="Search">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
