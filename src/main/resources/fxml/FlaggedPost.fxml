@@ -15,7 +15,7 @@
         <URL value="@/styles/waitinglist.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#6b5d42" height="540.0" stroke="TRANSPARENT" strokeType="INSIDE" width="840.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#186d86" height="540.0" layoutX="123.0" stroke="TRANSPARENT" strokeType="INSIDE" width="717.0" />
       <Label layoutX="537.0" layoutY="37.0" text="Flagged Posts " textFill="WHITE">
          <font>
             <Font name="DINEngschriftStd" size="59.0" />
@@ -24,25 +24,25 @@
       <TextField fx:id="reply" editable="false" layoutX="257.0" layoutY="130.0" onAction="#replyID" />
       <Label layoutX="182.0" layoutY="134.0" text="Replying To" textFill="WHITE" />
       <TextArea fx:id="contentBox" layoutX="182.0" layoutY="178.0" onDragDetected="#content" prefHeight="200.0" prefWidth="619.0" />
-      <Button fx:id="loadSpam" layoutX="668.0" layoutY="130.0" mnemonicParsing="false" onAction="#gotoSpam" text="Go To Spam Posts &gt;&gt;">
+      <Button fx:id="loadSpam" blendMode="OVERLAY" layoutX="668.0" layoutY="130.0" mnemonicParsing="false" onAction="#gotoSpam" text="Go To Spam Posts &gt;&gt;">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button fx:id="next" layoutX="323.0" layoutY="465.0" mnemonicParsing="false" onAction="#nextButton" text="NEXT">
+      <Button fx:id="next" blendMode="OVERLAY" layoutX="323.0" layoutY="465.0" mnemonicParsing="false" onAction="#nextButton" text="NEXT">
          <effect>
             <SepiaTone />
          </effect></Button>
-      <Button fx:id="prev" layoutX="180.0" layoutY="465.0" mnemonicParsing="false" onAction="#prevButton" text="PREV">
+      <Button fx:id="prev" blendMode="OVERLAY" layoutX="180.0" layoutY="465.0" mnemonicParsing="false" onAction="#prevButton" text="PREV">
          <effect>
             <SepiaTone />
          </effect></Button>
       <TextField fx:id="page" alignment="CENTER" layoutX="239.0" layoutY="465.0" prefHeight="25.0" prefWidth="73.0" promptText="1 / 25" />
-      <Button fx:id="unflag" layoutX="735.0" layoutY="424.0" mnemonicParsing="false" onAction="#unflagButton" text="UNFLAG">
+      <Button fx:id="unflag" blendMode="OVERLAY" layoutX="735.0" layoutY="424.0" mnemonicParsing="false" onAction="#unflagButton" text="UNFLAG">
          <effect>
             <SepiaTone />
          </effect>
       </Button>
-      <Button fx:id="remove" layoutX="734.0" layoutY="465.0" mnemonicParsing="false" onAction="#removeButton" text="REMOVE">
+      <Button fx:id="remove" blendMode="OVERLAY" layoutX="734.0" layoutY="465.0" mnemonicParsing="false" onAction="#removeButton" text="REMOVE">
          <effect>
             <SepiaTone />
          </effect>

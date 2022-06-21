@@ -6,26 +6,30 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #00e6e6;" styleClass="parent" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.RegistrationUiController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="492.0" style="-fx-background-color: #00e6e6;" styleClass="parent" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Admin.RegistrationUiController">
     <stylesheets>
         <URL value="@/styles/registrationui.css" />
     </stylesheets>
    <children>
-      <Text layoutX="21.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: #000000;" text="Registration Form" wrappingWidth="184.9375">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3775ab" height="692.0" layoutX="-3.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="503.0" />
+      <Text fill="WHITE" layoutX="54.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: #000000;" text="Registration Form" wrappingWidth="184.9375">
          <font>
             <Font name="Impact" size="24.0" />
          </font>
       </Text>
-      <Label layoutX="20.0" layoutY="138.0" text="Fill the form for registration" textFill="#545454">
+      <Label layoutX="54.0" layoutY="139.0" text="Fill the form for registration" textFill="WHITE">
          <font>
             <Font name="Ebrima Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="closeBtn" layoutX="367.0" layoutY="13.0" mnemonicParsing="false" onAction="#closeButton" onMouseClicked="#close_app" opacity="0.84" prefHeight="4.0" prefWidth="17.0" styleClass="closeBtn" text="X" textFill="#545454">
+      <Button fx:id="closeBtn" layoutX="441.0" layoutY="26.0" mnemonicParsing="false" onAction="#closeButton" onMouseClicked="#close_app" opacity="0.84" prefHeight="4.0" prefWidth="17.0" styleClass="closeBtn" text="X" textFill="#545454">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -33,10 +37,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <TextField fx:id="username" layoutX="123.0" layoutY="196.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Username" />
-      <PasswordField fx:id="password" accessibleRole="TEXT_FIELD" layoutX="123.0" layoutY="299.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Set Password" />
-      <TextField fx:id="email" accessibleRole="PASSWORD_FIELD" layoutX="123.0" layoutY="246.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Email" />
-      <Button fx:id="registerBtn" layoutX="38.0" layoutY="475.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registerButton" prefHeight="50.0" prefWidth="340.0" styleClass="loginBtn" text="Register" textFill="#080808">
+      <TextField fx:id="username" layoutX="180.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Username" />
+      <PasswordField fx:id="password" accessibleRole="TEXT_FIELD" layoutX="180.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Set Password" />
+      <TextField fx:id="email" accessibleRole="PASSWORD_FIELD" layoutX="180.0" layoutY="242.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Email" />
+      <Button fx:id="registerBtn" blendMode="OVERLAY" layoutX="86.0" layoutY="490.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registerButton" prefHeight="50.0" prefWidth="340.0" styleClass="loginBtn" text="Register" textFill="#9094bf">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -44,37 +48,42 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="backBtn" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#backButton" onMouseClicked="#back_to_menu" opacity="0.86" prefHeight="26.0" prefWidth="30.0" styleClass="backBtn" text="⬅" textFill="#545454">
+      <Button fx:id="backBtn" blendMode="OVERLAY" layoutX="34.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButton" onMouseClicked="#back_to_menu" opacity="0.86" prefHeight="26.0" prefWidth="63.0" styleClass="backBtn" text="⬅" textFill="#545454">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="54.0" layoutY="207.0" prefHeight="18.0" prefWidth="63.0" text="Username :">
+      <Label layoutX="54.0" layoutY="203.0" prefHeight="18.0" prefWidth="63.0" text="Username :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="78.0" layoutY="257.0" prefHeight="18.0" prefWidth="43.0" text="Email :">
+      <Label layoutX="54.0" layoutY="253.0" prefHeight="18.0" prefWidth="43.0" text="Email :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="54.0" layoutY="310.0" prefHeight="18.0" prefWidth="63.0" text="Password :">
+      <Label layoutX="54.0" layoutY="306.0" prefHeight="18.0" prefWidth="63.0" text="Password :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="8.0" layoutY="364.0" prefHeight="18.0" prefWidth="114.0" text="Confirm Password :">
+      <Label layoutX="54.0" layoutY="360.0" prefHeight="18.0" prefWidth="114.0" text="Confirm Password :" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="418.0" prefHeight="18.0" prefWidth="86.0" text="Referral Key : ">
+      <Label layoutX="54.0" layoutY="414.0" prefHeight="18.0" prefWidth="86.0" text="Referral Key : " textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <PasswordField fx:id="confirmpass" accessibleRole="TEXT_FIELD" layoutX="123.0" layoutY="353.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Re-enter Password" />
-      <PasswordField fx:id="referralkey" accessibleRole="TEXT_FIELD" layoutX="123.0" layoutY="407.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Referral Key" />
+      <PasswordField fx:id="confirmpass" accessibleRole="TEXT_FIELD" layoutX="180.0" layoutY="349.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Re-enter Password" />
+      <PasswordField fx:id="referralkey" accessibleRole="TEXT_FIELD" layoutX="180.0" layoutY="403.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Referral Key" />
+      <ImageView fitHeight="174.0" fitWidth="155.0" layoutX="349.0" layoutY="540.0">
+         <image>
+            <Image url="@../Media/output-onlinegiftools%20(3).gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -22,11 +22,11 @@ public class RunConfession extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Submission.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/SearchPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/welcomePage.fxml"));
 
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
-        scene.getStylesheets().add("/styles/userpage.css");
+        scene.getStylesheets().add("/styles/welcomepage.css");
 	stage.setResizable(false);
         stage.setTitle("JavaFX and Maven");
         stage.setScene(scene);
@@ -35,41 +35,21 @@ public class RunConfession extends Application {
 	Timer time = new Timer();
 	TimerTask loop = new Loop();
 	
-	
 	time.schedule(loop, 1000 * 60 * 1, 1000 * 60 * 1);
-	
-	
     }
-    
-    
-
-    /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
-	
-	
     }
-
     private static class Loop extends TimerTask {
 	operationTest sql = new operationTest();
 	Connection conn = sql.getConnection();
 	waitingListPop pop = new waitingListPop();
 	Timer time = new Timer();
-
 	public Loop() {
 	}
-
 	@Override
 	public void run() {
 	    try{
-
 	    if (sql.count("waitinglist", conn) > 10) {
 		time.schedule(new MyTimerTask(), 1000 * 60 * 1);
 	    } else if (sql.count("waitinglist", conn) > 5) {
@@ -77,15 +57,11 @@ public class RunConfession extends Application {
 	    } else if (sql.count("waitinglist", conn) > 0) {
 		time.schedule(new MyTimerTask(), 1000 * 60 * 3);
 	    } 
-	
 	    }catch(Exception e){
 		JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());
 	    }
 	}
     }
-
-   
-
 }
 class MyTimerTask extends TimerTask {
     waitingListPop pop = new waitingListPop();

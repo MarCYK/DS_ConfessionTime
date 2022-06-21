@@ -5,16 +5,18 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="537.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="382.0" prefWidth="625.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.LoginController">
     <stylesheets>
         <URL value="@/styles/welcomepage.css" />
     </stylesheets>
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#276165" height="400.0" layoutX="322.0" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#276165" height="400.0" layoutX="322.0" layoutY="3.0" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
       <Label layoutX="427.0" layoutY="55.0" prefHeight="69.0" prefWidth="125.0" text="Log In" textFill="WHITE">
          <font>
             <Font name="Calibri" size="47.0" />
@@ -27,5 +29,10 @@
       <PasswordField fx:id="pass" layoutX="414.0" layoutY="197.0" />
       <Label layoutX="516.0" layoutY="316.0" onMouseClicked="#signupButton" text="Sign Up" textFill="#77d7dd" />
       <Label layoutX="452.0" layoutY="316.0" text="New Here?" textFill="WHITE" />
+      <ImageView fitHeight="161.0" fitWidth="200.0" layoutX="58.0" layoutY="244.0">
+         <image>
+            <Image url="@../Media/output-onlinegiftools%20(4).gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
