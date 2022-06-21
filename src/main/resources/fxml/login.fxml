@@ -23,7 +23,7 @@
       <TextField fx:id="id" layoutX="413.0" layoutY="156.0" />
       <Label layoutX="368.0" layoutY="160.0" text="USER" textFill="WHITE" />
       <Label layoutX="368.0" layoutY="201.0" text="PASS" textFill="WHITE" />
-      <Button fx:id="login" blendMode="OVERLAY" cache="true" layoutX="484.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="25.0" prefWidth="78.0" text="Log In" textFill="#9097c3" />
+      <Button fx:id="login" blendMode="OVERLAY" cache="true" layoutX="484.0" layoutY="275.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="25.0" prefWidth="78.0" text="Log In" textFill="#276165" />
       <PasswordField fx:id="pass" layoutX="414.0" layoutY="197.0" />
       <Label layoutX="516.0" layoutY="316.0" onMouseClicked="#signupButton" text="Sign Up" textFill="#77d7dd" />
       <Label layoutX="452.0" layoutY="316.0" text="New Here?" textFill="WHITE" />

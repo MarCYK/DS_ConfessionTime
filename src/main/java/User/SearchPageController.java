@@ -13,11 +13,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -32,7 +36,9 @@ import javafx.stage.Stage;
  * @author Marvin Chin Yi Kai
  */
 public class SearchPageController implements Initializable {
-
+    
+    String[] value = {"All", "Search by ID","Search by Keyword","Search by Date Only","Search by Date/Time"};
+    
     @FXML
     private TextField textField_promptInput;
     @FXML
@@ -45,12 +51,18 @@ public class SearchPageController implements Initializable {
     private TableColumn<showPost, String> column_Time;
     @FXML
     private ImageView image_Return;
+    @FXML
+    private ChoiceBox<String> choicebox;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+	choicebox.getItems().addAll(FXCollections.observableArrayList(value));
+        choicebox.getSelectionModel().select("All");
+	choicebox.show();
 	table_Search.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 	column_ID.setReorderable(false);
 	column_Content.setReorderable(false);
@@ -59,6 +71,7 @@ public class SearchPageController implements Initializable {
         operationTest sql = new operationTest();
         Connection conn = sql.getConnection();
         ObservableList<showPost> ob = FXCollections.observableArrayList();
+        
         try{
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM node");
             
@@ -75,42 +88,149 @@ public class SearchPageController implements Initializable {
             column_Time.setCellValueFactory(new PropertyValueFactory<>("date"));
             table_Search.setItems(null);
             table_Search.setItems(ob);
+           
+//            choicebox.setOnAction((event) -> {
+                String choice = choicebox.getSelectionModel().getSelectedItem();
+                //Search keyword
+                if(choice.equals("Search by ID")) {
+                    FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
+                    textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
+                        filtered.setPredicate(showPost -> {
+
+                            if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                                return true;
+                            }               
+
+                            String search = newValue.toLowerCase();
+
+                            if(showPost.thisIDProperty().toString().toLowerCase().contains(search)){
+                                return true;
+                            }
+
+                            else
+                                return false;
+                        });
+                    });
+
+                    SortedList<showPost> sl = new SortedList<>(filtered);
+                    sl.comparatorProperty().bind(table_Search.comparatorProperty());
+
+                    table_Search.setItems(sl);
+
+                } else if(choice.equals("Search by Keyword")) {
+                                        FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
+                    textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
+                        filtered.setPredicate(showPost -> {
+
+                            if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                                return true;
+                            }               
+
+                            String search = newValue.toLowerCase();
+
+                            if(showPost.contentProperty().toString().toLowerCase().contains(search)){
+                                return true;
+                            }
+
+                            else
+                                return false;
+                        });
+                    });
+
+                    SortedList<showPost> sl = new SortedList<>(filtered);
+                    sl.comparatorProperty().bind(table_Search.comparatorProperty());
+
+                    table_Search.setItems(sl);
+                    
+                } else if(choice.equals("Search by Date Only")) {
+                    FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
+                    textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
+                        filtered.setPredicate(showPost -> {
+
+                            if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                                return true;
+                            }               
+
+                            String search = newValue.toLowerCase();
+
+                            if(showPost.dateOnlyProperty().toString().indexOf(search) > -1){
+                                return true;
+                            }
+
+                            else
+                                return false;
+                        });
+                    });
+
+                    SortedList<showPost> sl = new SortedList<>(filtered);
+                    sl.comparatorProperty().bind(table_Search.comparatorProperty());
+
+                    table_Search.setItems(sl);
+                    
+                } else if(choice.equals("Search by Date/Time")) {
+                    FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
+                    textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
+                        filtered.setPredicate(showPost -> {
+
+                            if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                                return true;
+                            }               
+
+                            String search = newValue.toLowerCase();
+
+                            if(showPost.dateProperty().toString().contains(search)){
+                                return true;
+                            }
+
+                            else
+                                return false;
+                        });
+                    });
+
+                    SortedList<showPost> sl = new SortedList<>(filtered);
+                    sl.comparatorProperty().bind(table_Search.comparatorProperty());
+
+                    table_Search.setItems(sl);
+                    
+                } else {
+                    FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
+                    textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
+                        filtered.setPredicate(showPost -> {
+
+                            if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
+                                return true;
+                            }               
+
+                            String search = newValue.toLowerCase();
+
+                            if(showPost.thisIDProperty().toString().toLowerCase().contains(search)){
+                                return true;
+                            }
+
+                            else if(showPost.contentProperty().toString().toLowerCase().contains(search)){
+                                return true;
+                            }
+
+                            else if(showPost.dateProperty().toString().contains(search)){
+                                return true;
+                            }
+
+                            else if(showPost.dateOnlyProperty().toString().indexOf(search) > -1){
+                                return true;
+                            }
+
+                            else
+                                return false;
+                        });
+                    });
+
+                    SortedList<showPost> sl = new SortedList<>(filtered);
+                    sl.comparatorProperty().bind(table_Search.comparatorProperty());
+
+                    table_Search.setItems(sl);
+                }
+//            });
             
-            FilteredList<showPost> filtered = new FilteredList<>(ob, b -> true);
-            textField_promptInput.textProperty().addListener((observable,oldValue,newValue) -> {
-                filtered.setPredicate(showPost -> {
-                    
-                    if(newValue.isEmpty() || newValue.isBlank() || newValue == null){
-                        return true;
-                    }               
-                    
-                    String search = newValue.toLowerCase();
-                    
-                    if(showPost.thisIDProperty().toString().toLowerCase().contains(search)){
-                        return true;
-                    }
-                    
-                    else if(showPost.contentProperty().toString().toLowerCase().contains(search)){
-                        return true;
-                    }
-                    
-                    else if(showPost.dateProperty().toString().contains(search)){
-                        return true;
-                    }
-                    
-                    else if(showPost.dateOnlyProperty().toString().indexOf(search) > -1){
-                        return true;
-                    }
-                    
-                    else
-                        return false;
-                });
-            });
-            
-            SortedList<showPost> sl = new SortedList<>(filtered);
-            sl.comparatorProperty().bind(table_Search.comparatorProperty());
-            
-            table_Search.setItems(sl);
         }
         
         catch(SQLException e){
@@ -131,6 +251,10 @@ public class SearchPageController implements Initializable {
         }
             catch(Exception e){}
         return true;
+    }
+
+    @FXML
+    private void choiceBox(MouseEvent event) {
     }
     
 }
