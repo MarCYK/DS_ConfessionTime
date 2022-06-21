@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -39,6 +40,7 @@ public class UserInterfaceController implements Initializable {
     @FXML
     private ImageView image_Search;
     
+    @FXML
     private boolean ToSubmitPage() throws ClassNotFoundException {
         Stage mainStage = (Stage) image_Submit.getScene().getWindow();
 
@@ -52,6 +54,7 @@ public class UserInterfaceController implements Initializable {
         return true;
     }
     
+    @FXML
     private boolean ToViewPage() throws ClassNotFoundException {
         Stage mainStage = (Stage) image_View.getScene().getWindow();
 
@@ -76,5 +79,9 @@ public class UserInterfaceController implements Initializable {
         }
             catch(Exception e){}
         return true;
+    }
+
+    @FXML
+    private void ToSearchInterface(MouseEvent event) {
     }
 }

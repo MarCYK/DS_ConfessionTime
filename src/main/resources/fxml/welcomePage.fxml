@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="Stack" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.WelcomePageController">
+<StackPane fx:id="Stack" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.WelcomePageController">
    <children>
       <ImageView fx:id="imageBg" fitHeight="399.0" fitWidth="620.0">
          <image>
@@ -34,7 +34,7 @@
           </stylesheets>
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#276165" height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" width="281.0" />
-            <Button blendMode="OVERLAY" layoutX="73.0" layoutY="188.0" mnemonicParsing="false" text="Proceed Anonymously" textFill="#3d7379" />
+            <Button fx:id="cmd_GuestLogin" blendMode="OVERLAY" layoutX="73.0" layoutY="188.0" mnemonicParsing="false" onAction="#guestLoginPressed" text="Proceed Anonymously" textFill="#3d7379" />
             <Button fx:id="admin" blendMode="OVERLAY" layoutX="72.0" layoutY="235.0" mnemonicParsing="false" onAction="#adminSign" prefHeight="25.0" prefWidth="135.0" text="Login As Moderator" textFill="#53707c" />
             <Label layoutX="53.0" layoutY="98.0" prefHeight="69.0" prefWidth="202.0" text="Welcome" textFill="WHITE">
                <font>

@@ -33,25 +33,25 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
-         <cursor>
+<!--         <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor>
+         </cursor>-->
       </Button>
       <TextField fx:id="username" layoutX="180.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Username" />
       <PasswordField fx:id="password" accessibleRole="TEXT_FIELD" layoutX="180.0" layoutY="295.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Set Password" />
       <TextField fx:id="email" accessibleRole="PASSWORD_FIELD" layoutX="180.0" layoutY="242.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="254.0" promptText="Enter Email" />
       <Button fx:id="registerBtn" blendMode="OVERLAY" layoutX="86.0" layoutY="490.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#registerButton" prefHeight="50.0" prefWidth="340.0" styleClass="loginBtn" text="Register" textFill="#9094bf">
-         <cursor>
+<!--         <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor>
+         </cursor>-->
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
       <Button fx:id="backBtn" blendMode="OVERLAY" layoutX="34.0" layoutY="25.0" mnemonicParsing="false" onAction="#backButton" onMouseClicked="#back_to_menu" opacity="0.86" prefHeight="26.0" prefWidth="63.0" styleClass="backBtn" text="⬅" textFill="#545454">
-         <cursor>
+<!--         <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor>
+         </cursor>-->
       </Button>
       <Label layoutX="54.0" layoutY="203.0" prefHeight="18.0" prefWidth="63.0" text="Username :" textFill="WHITE">
          <font>

@@ -16,6 +16,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -40,6 +42,8 @@ public class WelcomePageController implements Initializable {
     private AnchorPane anchorPane;
     @FXML
     private StackPane Stack;
+    @FXML
+    private Button cmd_GuestLogin;
    
 
     /**
@@ -70,6 +74,16 @@ public class WelcomePageController implements Initializable {
             Stack.getChildren().remove(anchorPane);
         });
         timeline.play();
+    }
+
+    @FXML
+    private void guestLoginPressed(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/UserInterface.fxml"));
+        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene (root);
+        stage.setTitle("JavaFX and Maven");
+        stage.setScene(scene);
+        stage.show();
     }
     
 }
