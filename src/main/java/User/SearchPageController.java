@@ -44,6 +44,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 /**
  * FXML Controller class
  *
@@ -78,11 +79,11 @@ public class SearchPageController implements Initializable {
         operationTest sql = new operationTest();
         Connection conn = sql.getConnection();
         
-        String query = "SELECT thisID, content, date FROM node";
+        String query = "SELECT * FROM node";
         
         try{
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query);
+            PreparedStatement prp = conn.prepareStatement(query);
+            ResultSet rs = prp.executeQuery();
             
             while(rs.next()){
                 
@@ -90,6 +91,7 @@ public class SearchPageController implements Initializable {
                 String queryContent = rs.getString("content");
                 Timestamp queryTime = rs.getTimestamp("date");
                 ob.add(new Post(queryID, queryContent, queryTime));
+		System.out.println(queryID + " " + queryContent + " " + queryTime + " added");
             }
             
             column_ID.setCellValueFactory(new PropertyValueFactory<>("thisid"));
@@ -138,6 +140,8 @@ public class SearchPageController implements Initializable {
         catch(SQLException e){
             Logger.getLogger(SearchPageController.class.getName()).log(Level.SEVERE,null,e);
             e.printStackTrace();
+	    
+	    JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
     

@@ -33,30 +33,12 @@ public class RunConfession extends Application {
         stage.show();
 	
 	Timer time = new Timer();
-	MyTimerTask task = new MyTimerTask();
-	TimerTask pause = new NoTask();
+	TimerTask loop = new Loop();
 	
 	
+	time.schedule(loop, 1000 * 60 * 1, 1000 * 60 * 1);
 	
 	
-	try{
-
-	    if (sql.count("waitinglist", conn) > 10) {
-		time.schedule(new MyTimerTask(), 1000 * 60 * 5, 1000 * 60 * 5);
-	    } else if (sql.count("waitinglist", conn) > 5) {
-		time.schedule(new MyTimerTask(), 1000 * 60 * 10, 1000 * 60 * 10);
-	    } else if (sql.count("waitinglist", conn) > 0) {
-		time.schedule(new MyTimerTask(), 1000 * 60 * 15, 1000 * 60 * 15);
-	    } else {
-		time.schedule(new NoTask(), 1000 * 60 * 1, 1000 * 60 * 1);
-	    }
-	
-	
-	
-	
-	}catch(Exception e){
-	    JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());
-	}
     }
     
     
@@ -75,16 +57,37 @@ public class RunConfession extends Application {
 	
     }
 
-    private static class NoTask extends TimerTask {
+    private static class Loop extends TimerTask {
+	operationTest sql = new operationTest();
+	Connection conn = sql.getConnection();
+	waitingListPop pop = new waitingListPop();
+	Timer time = new Timer();
 
+	public Loop() {
+	}
+
+	@Override
 	public void run() {
+	    try{
+
+	    if (sql.count("waitinglist", conn) > 10) {
+		time.schedule(new MyTimerTask(), 1000 * 60 * 1);
+	    } else if (sql.count("waitinglist", conn) > 5) {
+		time.schedule(new MyTimerTask(), 1000 * 60 * 2);
+	    } else if (sql.count("waitinglist", conn) > 0) {
+		time.schedule(new MyTimerTask(), 1000 * 60 * 3);
+	    } 
+	
+	    }catch(Exception e){
+		JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());
+	    }
 	}
     }
 
+   
+
 }
 class MyTimerTask extends TimerTask {
-    operationTest sql = new operationTest();
-    Connection conn = sql.getConnection();
     waitingListPop pop = new waitingListPop();
     public void run() {
         pop.start();
