@@ -39,7 +39,7 @@ public class RunConfession extends Application {
 	
 	
 	
-	
+	try{
 
 	    if (sql.count("waitinglist", conn) > 10) {
 		time.schedule(new MyTimerTask(), 1000 * 60 * 5, 1000 * 60 * 5);
