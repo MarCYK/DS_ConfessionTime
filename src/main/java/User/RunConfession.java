@@ -22,7 +22,7 @@ public class RunConfession extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 //        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Submission.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/demo.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("/fxml/demo.fxml"));
 
         Scene scene = new Scene(root);
 //        scene.getStylesheets().add("/styles/submission.css");
