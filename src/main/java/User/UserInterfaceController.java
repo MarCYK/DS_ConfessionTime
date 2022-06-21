@@ -56,7 +56,7 @@ public class UserInterfaceController implements Initializable {
         Stage mainStage = (Stage) image_View.getScene().getWindow();
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("ViewPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("Demo.fxml"));
             Scene scene = new Scene(root);
             mainStage.setScene(scene);
             mainStage.setTitle("Confession Time!");

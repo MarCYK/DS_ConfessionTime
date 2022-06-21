@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller=".UserInterfaceController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.UserInterfaceController">
     <stylesheets>
         <URL value="@/styles/userinterface.css" />
     </stylesheets>
@@ -27,7 +27,7 @@
             <Image url="@../../java/User/images/view.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="image_Search" fitHeight="102.0" fitWidth="114.0" layoutX="240.0" layoutY="224.0" onMouseClicked="#ToSearchInterface" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="image_Search" fitHeight="102.0" fitWidth="114.0" layoutX="240.0" layoutY="224.0" onMouseClicked="#ToSearchPage" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../java/User/images/Search.png" />
          </image>
