@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package User;
 
 import Confession.showPost;
@@ -18,14 +14,17 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javax.swing.JOptionPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -112,13 +111,21 @@ public class SearchPageController implements Initializable {
         catch(SQLException e){
             Logger.getLogger(SearchPageController.class.getName()).log(Level.SEVERE,null,e);
             e.printStackTrace();
-	    
-	    JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }    
 
     @FXML
-    private void BackToUserInterface(MouseEvent event) {
+    private boolean BackToUserInterface() throws ClassNotFoundException {
+        Stage mainStage = (Stage) image_Return.getScene().getWindow();
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
+            Scene scene = new Scene(root);
+            mainStage.setScene(scene);
+            mainStage.setTitle("Test Window");
+        }
+            catch(Exception e){}
+        return true;
     }
     
 }
