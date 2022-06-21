@@ -80,7 +80,7 @@ public class LoginController implements Initializable {
 
 		Scene scene = new Scene(root);
 	//        scene.getStylesheets().add("/styles/submission.css");
-		scene.getStylesheets().add("/styles/waitinglist.css");
+		scene.getStylesheets().add("/styles/registrationui.css");
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
 		stage.setTitle("JavaFX and Maven");
