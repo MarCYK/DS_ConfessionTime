@@ -51,6 +51,11 @@ public class SearchPageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+	table_Search.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+	column_ID.setReorderable(false);
+	column_Content.setReorderable(false);
+	column_Time.setReorderable(false);
+	
         operationTest sql = new operationTest();
         Connection conn = sql.getConnection();
         ObservableList<showPost> ob = FXCollections.observableArrayList();
