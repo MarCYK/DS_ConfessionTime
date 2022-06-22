@@ -76,6 +76,8 @@ public class DemoController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        text.setWrapText(true);
+        text1.setWrapText(true);
 	setPost();
     }    
 
@@ -182,10 +184,10 @@ public class DemoController implements Initializable {
 	    
 	    if(rs1!=null){
 		if (rs1.getString("replyID").equals("")) {
-		    text.setText(rs1.getString("thisID") + "\n\n" + rs1.getString("content"));
+		    text.setText(rs1.getString("thisID") +"\n["+rs1.getString("date") +"]\n\n" + rs1.getString("content"));
 		    score.setText(Integer.toString(rs1.getInt("score")));
 		} else {
-		    text.setText(rs1.getString("thisID") + "\n\n" + "replying to : " + rs1.getString("replyID") + "\n" + rs1.getString("content"));
+		    text.setText(rs1.getString("thisID") +"\n["+rs1.getString("date") +"]\n\n" + "replying to : " + rs1.getString("replyID") + "\n" + rs1.getString("content"));
 		    score.setText(Integer.toString(rs1.getInt("score")));
 		}
 	    }
@@ -213,6 +215,7 @@ public class DemoController implements Initializable {
 	    }
 	indicator.setText(page+"/"+total);
 	
+        text1.setText("");
     }
 
     @FXML
@@ -230,6 +233,8 @@ public class DemoController implements Initializable {
 		
 	    }
 	indicator.setText(page+"/"+total);
+        
+        text1.setText("");
     }
 
     @FXML
@@ -241,7 +246,7 @@ public class DemoController implements Initializable {
 	    try{
 		ResultSet rs1 = sql.sqlSelect("select * from node where replyID = '"+currentID+"'", conn);
 		while(rs1.next()){
-		    str += rs1.getString("thisID")+"\n"+rs1.getString("content");
+		    str += rs1.getString("thisID")+"\n["+rs1.getString("date")+"]\n\n"+rs1.getString("content");
 		    str +="\n\n-----------------------------------------------\n\n";
 		}
 	    }catch(Exception e){

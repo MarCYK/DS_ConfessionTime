@@ -69,6 +69,7 @@ public class WaitingListController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        contentBox.setWrapText(true);
         System.out.println("Test");
 	setPost();
 	total = sql.count("waitinglist", conn);
