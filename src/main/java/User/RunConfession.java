@@ -58,7 +58,7 @@ public class RunConfession extends Application {
 		time.schedule(new MyTimerTask(), 1000 * 60 * 10);
 	    } else if (sql.count("waitinglist", conn) > 0) {
                 //15 minute if waiting list > 0
-		time.schedule(new MyTimerTask(), 1000);
+		time.schedule(new MyTimerTask(), 1000 * 60 * 15);
 	    } 
 	    }catch(Exception e){
 		JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());

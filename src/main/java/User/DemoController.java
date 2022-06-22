@@ -87,7 +87,7 @@ public class DemoController implements Initializable {
 	    ResultSet rs = sql.sqlSelect("select * from node limit 1 offset "+offset, conn);
 	    rs.next();				    //Select first row from waiting list
 
-	    sql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), rs.getString("date"), "node", conn); //Copy the first row to node
+	    sql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), rs.getString("date"), "flag", conn); //Copy the first row to node
 
 	  						    
 	    JOptionPane.showMessageDialog(null, "This Post Has Been Reported");
