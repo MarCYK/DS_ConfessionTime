@@ -30,9 +30,9 @@
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#3f62ae" height="55.0" layoutX="-2.0" layoutY="57.0" opacity="0.83" stroke="TRANSPARENT" strokeType="INSIDE" width="614.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#758ca1" height="195.0" layoutY="133.0" opacity="0.65" stroke="#fff0f000" strokeType="INSIDE" width="614.0" />
-      <Label layoutX="98.0" layoutY="65.0" prefHeight="18.0" prefWidth="515.0" text="Welcome to Confession Time!" textFill="WHITE">
+      <Label layoutX="99.0" layoutY="65.0" prefHeight="18.0" prefWidth="515.0" text="Welcome to Confession Time!" textFill="WHITE">
          <font>
-            <Font name="Calibri" size="33.0" />
+            <Font name="Candara Light" size="33.0" />
          </font>
       </Label>
       <ImageView fx:id="image_Submit" fitHeight="102.0" fitWidth="114.0" layoutX="68.0" layoutY="170.0" onMouseClicked="#ToSubmitPage" pickOnBounds="true" preserveRatio="true">

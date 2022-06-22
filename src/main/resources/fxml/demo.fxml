@@ -19,14 +19,16 @@
         <URL value="@/styles/demo.css" />
     </stylesheets>
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#86bbc4" height="529.0" layoutY="15.0" stroke="#ffffff00" strokeType="INSIDE" width="790.0" />
       <ScrollPane layoutX="182.0" layoutY="53.0" prefHeight="490.0" prefWidth="451.0">
          <content>
             <VBox fx:id="vbox" prefHeight="536.0" prefWidth="434.0">
                <children>
                   <Pane fx:id="Post" prefHeight="273.0" prefWidth="434.0">
                      <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5a92c6" height="274.0" layoutX="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="439.0" />
                         <TextArea fx:id="text" editable="false" layoutX="25.0" layoutY="21.0" prefHeight="204.0" prefWidth="365.0" />
-                        <Button layoutX="338.0" layoutY="237.0" mnemonicParsing="false" onAction="#reportButton" text="Report" />
+                        <Button blendMode="OVERLAY" layoutX="338.0" layoutY="237.0" mnemonicParsing="false" onAction="#reportButton" text="Report" />
                         <ImageView fx:id="upvote" blendMode="SRC_ATOP" fitHeight="25.0" fitWidth="23.0" layoutX="27.0" layoutY="232.0" onMouseClicked="#upvoteButton" opacity="0.22">
                            <image>
                               <Image url="@../Media/toppng.com-reddit-clipart-icon-reddit-upvote-transparent-1024x1049.png" />
@@ -38,12 +40,12 @@
                            </image>
                         </ImageView>
                         <TextField fx:id="score" editable="false" layoutX="102.0" layoutY="234.0" prefHeight="25.0" prefWidth="33.0" />
-                        <Button fx:id="reply" layoutX="247.0" layoutY="238.0" mnemonicParsing="false" onAction="#replyButton" text="Show Reply" />
+                        <Button fx:id="reply" blendMode="OVERLAY" layoutX="247.0" layoutY="238.0" mnemonicParsing="false" onAction="#replyButton" text="Show Reply" />
                      </children>
                   </Pane>
                   <Pane fx:id="Post1" prefHeight="273.0" prefWidth="434.0">
                      <children>
-                        <TextArea fx:id="text1" editable="false" layoutX="25.0" layoutY="21.0" prefHeight="165.0" prefWidth="365.0" />
+                        <TextArea fx:id="text1" editable="false" layoutX="25.0" layoutY="28.0" prefHeight="165.0" prefWidth="365.0" />
                      </children>
                   </Pane>
                </children>
@@ -56,10 +58,10 @@
             <Font name="Amsterdam One" size="26.0" />
          </font>
       </Label>
-      <Button layoutX="139.0" layoutY="504.0" mnemonicParsing="false" onAction="#prevButton" text="&lt;&lt;" />
+      <Button blendMode="GREEN" layoutX="139.0" layoutY="504.0" mnemonicParsing="false" onAction="#prevButton" text="&lt;&lt;" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="33.0" layoutX="699.0" layoutY="495.0" stroke="TRANSPARENT" strokeType="INSIDE" width="91.0" />
       <Button fx:id="c" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#BackPressed" text="Back" />
-      <Button layoutX="645.0" layoutY="504.0" mnemonicParsing="false" onAction="#nextButton" text="&gt;&gt;" />
+      <Button blendMode="GREEN" layoutX="645.0" layoutY="504.0" mnemonicParsing="false" onAction="#nextButton" text="&gt;&gt;" />
       <TextField fx:id="indicator" layoutX="715.0" layoutY="499.0" prefHeight="25.0" prefWidth="59.0" />
    </children>
 </AnchorPane>
