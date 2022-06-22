@@ -4,7 +4,7 @@
  */
 package User;
 
-import static Admin.Launch.stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;

@@ -50,6 +50,7 @@ public class FlaggedPostsController implements Initializable {
     private TextField reply;
     @FXML
     private TextArea contentBox;
+    
     @FXML
     private Button next;
     @FXML

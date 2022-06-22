@@ -5,7 +5,7 @@ package User;
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 
-import static Admin.Launch.stage;
+
 import SQLOperations.operationTest;
 import java.io.IOException;
 import java.net.URL;
@@ -260,7 +260,7 @@ public class DemoController implements Initializable {
 
 	Scene scene = new Scene(root);
 
-	scene.getStylesheets().add("/styles/userinterface.css");
+	scene.getStylesheets().add("/styles/user.css");
 	Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
 	stage.setTitle("JavaFX and Maven");
