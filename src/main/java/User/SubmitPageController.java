@@ -114,7 +114,7 @@ public class SubmitPageController implements Initializable {
 		scene.getStylesheets().add("/styles/userinterface.css");
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 
-		stage.setTitle("JavaFX and Maven");
+		stage.setTitle("Confession Time");
 		stage.setScene(scene);
 		stage.show();
     }
