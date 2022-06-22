@@ -28,6 +28,7 @@ public class waitingListPop {
 	timeClass time = new timeClass();
         Tag tag = new Tag();
 	operationTest mysql = new operationTest();
+        RepostDetection rp = new RepostDetection();
 	try{
 	    Connection conn = mysql.getConnection();
 	    
@@ -37,7 +38,7 @@ public class waitingListPop {
 		
 		
 		
-		if(rs.getString("status").equals("1")){
+		if(rs.getString("status").equals("1") && !rp.checkRepost(rs.getString("content"))){
 		    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
 		}
 		else if(rs.getString("status").equals("0")){
@@ -48,7 +49,7 @@ public class waitingListPop {
 		}
 		System.out.println("\n"+rs.getString("thisID")+"\n"+rs.getString("content")+"\nPopped at "+time.timeNow());
 		mysql.sqlDelete("delete from waitinglist limit 1", conn);							    //Delete first row from waiting list
-		System.out.println("test");
+                System.out.println("");
 	    }
 		
 	    

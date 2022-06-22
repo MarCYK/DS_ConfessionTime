@@ -41,6 +41,7 @@ public class WaitingListController implements Initializable {
     private TextField reply;
     @FXML
     private TextArea contentBox;
+    
     @FXML
     private Button prev;
     @FXML
@@ -65,6 +66,7 @@ public class WaitingListController implements Initializable {
 
     operationTest sql = new operationTest();
     Connection conn = sql.getConnection();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Test");
@@ -131,6 +133,7 @@ public class WaitingListController implements Initializable {
 
     @FXML
     private void content(MouseEvent event) {
+        
 	int offset = counter-1;
 	try{
 	    if(sql.count("waitinglist", conn)!=0){
