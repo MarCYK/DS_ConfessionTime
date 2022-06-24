@@ -66,9 +66,9 @@ public class SubmitPageController implements Initializable {
 	SpamDetection spm = new SpamDetection();
 	RepostDetection rp = new RepostDetection();
         try{
-	               
-	    
-	    if(spm.classifySpam(content)||rp.checkRepost(content)){
+	    ResultSet check = sql.sqlSelect("select * from node where exists(select * from node where thisID = '"+replyid+"')", conn);
+	    if(check.next()){
+		if(spm.classifySpam(content)||rp.checkRepost(content)){
 		    try {
 		    PreparedStatement prp = conn.prepareStatement("insert into waitinglist (thisID,replyID,content,date,status) values (?,?,?,?,?)");
 		    prp.setString(1, thisid);
@@ -99,6 +99,10 @@ public class SubmitPageController implements Initializable {
 		}
 	    
             JOptionPane.showMessageDialog(null, ">>Submitted at "+time.timeNow()+"\n>>Your Confession ID is "+thisid+"\n>>Your Submission Will be Published Soon");
+	    }else{
+		JOptionPane.showMessageDialog(null, "ID Not Exist !");
+	    }
+	    
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }

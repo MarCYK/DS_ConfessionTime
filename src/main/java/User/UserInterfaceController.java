@@ -67,7 +67,7 @@ public class UserInterfaceController implements Initializable {
     
     @FXML
     private void ToViewPage(MouseEvent event) throws ClassNotFoundException, IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/demo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ViewPage.fxml"));
 
 		Scene scene = new Scene(root);
 	//        scene.getStylesheets().add("/styles/submission.css");

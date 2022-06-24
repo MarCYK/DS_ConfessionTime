@@ -33,7 +33,7 @@ import javax.swing.JOptionPane;
  *
  * @author Irfan
  */
-public class DemoController implements Initializable {
+public class ViewPageController implements Initializable {
     
     operationTest sql = new operationTest();
     Connection conn = sql.getConnection();
@@ -253,6 +253,9 @@ public class DemoController implements Initializable {
 		JOptionPane.showMessageDialog(null, e.getMessage());
 	    }
 	    text1.setText(str);
+	    if(text1.getText().equals("")){
+		text1.setText("No Replies? :(");
+	    }
 	}else{
 	    text1.setText("");
 	}
