@@ -7,22 +7,24 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #66d9ff;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.SubmitPageController">
     <stylesheets>
         <URL value="@/styles/submitpage.css" />
     </stylesheets>
    <children>
-      <TextArea fx:id="content" layoutX="67.0" layoutY="121.0" prefHeight="200.0" prefWidth="462.0" promptText="Please enter confession content..." />
-      <Label layoutX="67.0" layoutY="22.0" text="&gt; Please enter the confession post ID you want to reply." />
-      <Label layoutX="67.0" layoutY="40.0" text="&gt; Leave it blank if you don't want to reply a confession post." />
-      <Label layoutX="67.0" layoutY="78.0" text="Reply confession post ID : " />
-      <TextField fx:id="replyID" layoutX="215.0" layoutY="74.0" />
-      <Button fx:id="submit" layoutX="477.0" layoutY="334.0" mnemonicParsing="false" onAction="#submitBtn" prefHeight="18.0" prefWidth="54.0" text="Submit">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4e779e" height="528.0" layoutX="-9.0" layoutY="-42.0" stroke="WHITE" strokeType="INSIDE" width="630.0" />
+      <TextArea fx:id="content" layoutX="65.0" layoutY="131.0" prefHeight="200.0" prefWidth="462.0" promptText="Please enter confession content..." />
+      <Label layoutX="65.0" layoutY="32.0" text="&gt; Please enter the confession post ID you want to reply." textFill="WHITE" />
+      <Label layoutX="65.0" layoutY="50.0" text="&gt; Leave it blank if you don't want to reply a confession post." textFill="WHITE" />
+      <Label layoutX="65.0" layoutY="88.0" text="Reply confession post ID : " textFill="WHITE" />
+      <TextField fx:id="replyID" layoutX="213.0" layoutY="84.0" />
+      <Button fx:id="submit" layoutX="473.0" layoutY="382.0" mnemonicParsing="false" onAction="#submitBtn" prefHeight="18.0" prefWidth="54.0" text="Submit">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="cmd_Back" layoutX="414.0" layoutY="334.0" mnemonicParsing="false" onAction="#BackPressed" prefHeight="25.0" prefWidth="54.0" text="Back" />
+      <Button fx:id="cmd_Back" layoutX="65.0" layoutY="382.0" mnemonicParsing="false" onAction="#BackPressed" prefHeight="25.0" prefWidth="54.0" text="Back" />
    </children>
 </AnchorPane>
