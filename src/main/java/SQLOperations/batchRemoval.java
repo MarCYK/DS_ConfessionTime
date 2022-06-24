@@ -31,7 +31,7 @@ public class batchRemoval {
 	    while(mysql.sqlSelect(check, conn).next()){		    //check if current node has child(s) or not (if has replies or not)
 		rs = mysql.sqlSelect(select, conn);
 		rs.next();
-		remove(rs.getString("thisID"),tablename);			    //iterate to the child node until reach childless node (post with no replies lmao)(Depth-first Search)
+		remove(rs.getString("thisID"),tablename);	    //iterate to the child node until reach childless node (post with no replies lmao)(Depth-first Search)
 	    }	
 	    mysql.sqlDelete(statement, conn);			    //delete the nodes, starting from the most bottom node
 	}catch(Exception e){

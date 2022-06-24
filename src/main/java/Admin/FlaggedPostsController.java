@@ -67,6 +67,7 @@ public class FlaggedPostsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        contentBox.setWrapText(true);
 	setPost();
 	total = sql.count("flag", conn);
 	page.setText(counter+"/"+total);

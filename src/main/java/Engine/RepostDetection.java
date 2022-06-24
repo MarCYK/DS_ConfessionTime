@@ -10,6 +10,14 @@ import info.debatty.java.stringsimilarity.*;
 import java.util.ArrayList;
 import java.sql.*;
 
+/*
+The Levenshtein distance between two words is the minimum number of single-character edits 
+(insertions, deletions or substitutions) required to change one word into the other.
+This distance is computed as levenshtein distance divided by the length of the longest string. 
+The resulting value is always in the interval [0.0 1.0]
+
+The similarity is computed as 1 - normalized distance.
+*/
 public class RepostDetection {
     NormalizedLevenshtein ro = new NormalizedLevenshtein();
     static ArrayList<String> content = new ArrayList<>();

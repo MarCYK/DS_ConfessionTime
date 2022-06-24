@@ -52,6 +52,7 @@ public class SubmitPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        content.setWrapText(true);
     }    
 
     @FXML
@@ -101,8 +102,9 @@ public class SubmitPageController implements Initializable {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
-    
-    
+        
+        this.content.setText("");
+      
     }
 
     @FXML

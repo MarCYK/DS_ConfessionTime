@@ -41,7 +41,7 @@ public class waitingListPop {
 		if(rs.getString("status").equals("1") && !rp.checkRepost(rs.getString("content"))){
 		    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "node", conn); //Copy the first row to node
 		}
-		else if(rs.getString("status").equals("0")){
+		else if(rs.getString("status").equals("0") || rp.checkRepost(rs.getString("content"))){
 		    mysql.sqlAddTo(rs.getString("thisID"), rs.getString("replyID"), rs.getString("content"), time.timeNow(), "spam", conn);
 		}
 		else{

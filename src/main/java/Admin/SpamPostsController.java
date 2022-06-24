@@ -64,6 +64,7 @@ public class SpamPostsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        contentBox.setWrapText(true);
 	setPost();
 	total = sql.count("spam", conn);
 	page.setText(counter+"/"+total);

@@ -4,6 +4,7 @@ import SQLOperations.operationTest;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Search {
     static ArrayList<Integer> id = new ArrayList<>();
@@ -52,7 +53,7 @@ public class Search {
 		}
             }
 	}catch(Exception e){
-	    System.out.println("get ratioed lmao");
+	    JOptionPane.showMessageDialog(null,"get ratioed lmao\n" + e.getMessage());
 	}
     }
     
@@ -72,7 +73,7 @@ public class Search {
 		}
             }
 	}catch(Exception e){
-	    System.out.println("get ratioed lmao");
+	    JOptionPane.showMessageDialog(null,"get ratioed lmao\n" + e.getMessage());
 	}
     }
     
@@ -93,7 +94,7 @@ public class Search {
 		}
             }
 	}catch(Exception e){
-	    System.out.println("get ratioed lmao");
+	    JOptionPane.showMessageDialog(null,"get ratioed lmao\n" + e.getMessage());
 	}
     }
     
@@ -113,7 +114,7 @@ public class Search {
 		}
             }
 	}catch(Exception e){
-	    System.out.println("get ratioed lmao");
+	    JOptionPane.showMessageDialog(null,"get ratioed lmao\n" + e.getMessage());
 	}
     }
     

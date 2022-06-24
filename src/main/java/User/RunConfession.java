@@ -35,7 +35,7 @@ public class RunConfession extends Application {
 	Timer time = new Timer();
 	TimerTask loop = new Loop();
 	
-	time.schedule(loop, 1000 * 60 * 1, 1000 * 60 * 1);
+	time.schedule(loop, 10000, 10000);
     }
     public static void main(String[] args) {
         launch(args);
@@ -51,11 +51,14 @@ public class RunConfession extends Application {
 	public void run() {
 	    try{
 	    if (sql.count("waitinglist", conn) > 10) {
-		time.schedule(new MyTimerTask(), 1000 * 60 * 1);
+                //5 minute if waiting list > 10
+		time.schedule(new MyTimerTask(), 1000 * 60 * 5);
 	    } else if (sql.count("waitinglist", conn) > 5) {
-		time.schedule(new MyTimerTask(), 1000 * 60 * 2);
+                //10 minute if waiting list > 5
+		time.schedule(new MyTimerTask(), 1000 * 60 * 10);
 	    } else if (sql.count("waitinglist", conn) > 0) {
-		time.schedule(new MyTimerTask(), 1000 * 60 * 3);
+                //15 minute if waiting list > 0
+		time.schedule(new MyTimerTask(), 1000 * 60 * 15);
 	    } 
 	    }catch(Exception e){
 		JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());
