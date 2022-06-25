@@ -187,7 +187,7 @@ public class SpamDetection {
 //        System.out.println("False count: " + fal);
 //        System.out.println("");
         
-        String str = "Trump BLM obama";
+        String str = "Kepada KMUM yang baru nanti tolong sediakan tng reload kat fakulti or kps or um sentral ker. \nItu jer saya minta sebagai student yang sentiasa risau akan  baki kad tngo ni cukup tak ?";
         System.out.println(str);
         System.out.println(spam.classifySpam(str));
         System.out.println("");
