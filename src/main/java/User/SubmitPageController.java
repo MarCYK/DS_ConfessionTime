@@ -67,7 +67,7 @@ public class SubmitPageController implements Initializable {
 	RepostDetection rp = new RepostDetection();
         try{
 	    ResultSet check = sql.sqlSelect("select * from node where exists(select * from node where thisID = '"+replyid+"')", conn);
-	    if(check.next()){
+	    if(check.next()||replyid.equals("")){
 		if(spm.classifySpam(content)||rp.checkRepost(content)){
 		    try {
 		    PreparedStatement prp = conn.prepareStatement("insert into waitinglist (thisID,replyID,content,date,status) values (?,?,?,?,?)");
