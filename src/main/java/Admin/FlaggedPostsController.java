@@ -103,8 +103,8 @@ public class FlaggedPostsController implements Initializable {
 	    }else{
 		ResultSet rs = sql.sqlSelect("select * from flag limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
 		currentID = rs.getString("thisID");
-		reply.setText("#"+rs.getString("replyID"));
-		if(reply.getText().equals("#null"))
+		reply.setText(rs.getString("replyID"));
+		if(reply.getText().equals("null"))
 		    reply.setText("none");
 	    }
 	    
@@ -119,7 +119,7 @@ public class FlaggedPostsController implements Initializable {
 	try{
 	    if(sql.count("flag", conn)!=0){
 		ResultSet rs = sql.sqlSelect("select * from flag limit 1 offset "+String.valueOf(offset)+"", conn);rs.next();
-		contentBox.setText("#"+rs.getString("thisID")+"\n\n"+rs.getString("content"));
+		contentBox.setText(rs.getString("thisID")+"\n\n"+rs.getString("content"));
 	    }
 	    
 	}catch(Exception e){

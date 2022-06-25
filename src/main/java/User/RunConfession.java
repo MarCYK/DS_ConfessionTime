@@ -52,13 +52,13 @@ public class RunConfession extends Application {
 	    try{
 	    if (sql.count("waitinglist", conn) > 10) {
                 //5 minute if waiting list > 10
-		time.schedule(new MyTimerTask(), 5000 * 60);
+		time.schedule(new MyTimerTask(), 1000 * 10);
 	    } else if (sql.count("waitinglist", conn) > 5) {
                 //10 minute if waiting list > 5
-		time.schedule(new MyTimerTask(), 10000 * 60);
+		time.schedule(new MyTimerTask(), 1000 * 10);
 	    } else if (sql.count("waitinglist", conn) > 0) {
                 //15 minute if waiting list > 0
-		time.schedule(new MyTimerTask(), 15000 * 60);
+		time.schedule(new MyTimerTask(), 1000 * 10);
 	    } 
 	    }catch(Exception e){
 		JOptionPane.showMessageDialog(null, "Startup error\n"+e.getMessage());
