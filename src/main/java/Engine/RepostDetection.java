@@ -53,7 +53,7 @@ public class RepostDetection {
     
     public static void main(String[] args) {
         RepostDetection rp = new RepostDetection();
-        String str = "content ";
+        String str = "betul huhu ";
         System.out.println(rp.checkRepost(str));
     }
 }

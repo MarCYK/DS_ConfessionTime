@@ -24,7 +24,7 @@ public class batchRemoval {
 	Connection conn = mysql.getConnection();
 	String statement = "delete from "+tablename+" where thisID = '"+str+"'";
 	String select = "select * from "+tablename+" where replyID = '"+str+"'";
-	String check = "select * from "+tablename+" where exists(select * from "+tablename+" where replyID = '"+str+"')";
+	String check = "select * from "+tablename+" String select = \"select * from \"+tablename+\" where replyID = '\"+str+\"'\";where exists(select * from "+tablename+" where replyID = '"+str+"')";
 	ResultSet rs = null;
 	
 	try{
