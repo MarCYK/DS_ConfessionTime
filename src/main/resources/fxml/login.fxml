@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="382.0" prefWidth="625.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="382.0" prefWidth="625.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User.LoginController">
     <stylesheets>
         <URL value="@/styles/welcomepage.css" />
     </stylesheets>
