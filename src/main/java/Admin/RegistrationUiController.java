@@ -99,7 +99,7 @@ public class RegistrationUiController implements Initializable {
         try{
             if(rk.equals("kaptenmarvin")){
 		if(pass.equals(conpass)){
-//		    if(sql.isValidEmail(mail)){
+		    if(sql.isValidEmail(mail)){
 			try {
 			    PreparedStatement prp = conn.prepareStatement("insert into admin (userID, password, email) values (?, ?, ?)");
 			    prp.setString(1, userID);
@@ -112,9 +112,9 @@ public class RegistrationUiController implements Initializable {
 //			    Logger.getLogger(RegistrationUiController.class.getName()).log(Level.SEVERE, null, ex);
 			    JOptionPane.showMessageDialog(null, "Registration Error\n"+e);
 			}
-//		    }else{
-//			JOptionPane.showMessageDialog(null, "Invalid Email !");
-//		    }
+		    }else{
+			JOptionPane.showMessageDialog(null, "Invalid Email !");
+		    }
 		}else{
 		    JOptionPane.showMessageDialog(null, "Password mismatch !");
 		}

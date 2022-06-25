@@ -35,7 +35,7 @@ public class RunConfession extends Application {
 	Timer time = new Timer();
 	TimerTask loop = new Loop();
 	
-	time.schedule(loop, 10000, 10000);
+	time.schedule(loop, 1000 * 60 * 1, 1000 * 60 * 1);
     }
     public static void main(String[] args) {
         launch(args);
@@ -47,6 +47,8 @@ public class RunConfession extends Application {
 	Timer time = new Timer();
 	public Loop() {
 	}
+        
+        //scheduling posts
 	@Override
 	public void run() {
 	    try{
